@@ -122,6 +122,10 @@ public class Main {
 			}
 		}
 	}
+	
+	private void stop() {
+		running = false;
+	}
 
 	private void render(Screen screen) {
 		window.update();
