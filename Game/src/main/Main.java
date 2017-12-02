@@ -25,7 +25,7 @@ public class Main {
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	MainMenu mainmenu = new MainMenu();
 	CharacterCreation charactermenu = new CharacterCreation();
-	public Menu menu = charactermenu;
+	public Menu menu = mainmenu;
 	public Level level;
 	static Main instance;
 
@@ -138,7 +138,7 @@ public class Main {
 
 	private void update() {
 		if (state == MENU) {
-
+			menu.update();
 		} else if (state == GAME) {
 			level.update();
 		}
