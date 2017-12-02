@@ -12,6 +12,18 @@ public class MainMenu extends Menu{
 	
 	int x;
 	int y;
+	
+	int x0;
+	int y0;
+	int x1;
+	int y1;
+	int x2;
+	int y2;
+	int x3;
+	int y3;
+	int x4;
+	int y4;
+	
 	int currentselection;
 	
 	// constructor
@@ -19,8 +31,25 @@ public class MainMenu extends Menu{
 			currentselection = 0;		// the selected thing
 			
 			// starting position for selector
-			x = 0;						// x of selector
-			y = 0;						// y of selector
+			x0 = 700;					// x of selector
+			y0 = 275;					// y of selector
+			
+			// more positions
+			x1 = 710;
+			y1 = 325;
+			
+			x2 = 730;
+			y2 = 375;
+			
+			x3 = 730;
+			y3 = 425;
+			
+			x4 = 770;
+			y4 = 460;
+			
+			// setting start position of selector
+			x = x0;
+			y = y0;
 			
 			menuBackground = new Texture("/sprites/MainMenu.png", 960, 540);
 			selector = new Texture("/sprites/Selector.png", 64, 64);
@@ -41,6 +70,7 @@ public class MainMenu extends Menu{
 	public void downPressed() {				// active when you press down key
 		if (currentselection < 5) {
 			currentselection++;
+			Selector();
 		}
 		else {
 			currentselection = 0;
@@ -49,13 +79,36 @@ public class MainMenu extends Menu{
 	public void upPressed() {				// active when you press up key
 		if (currentselection > 0) {
 			currentselection--;
+			Selector();
 		}
 		else {
 			currentselection = 4;
 		}
 	}
 	
-	//When you press enter on selected thing
+	// pointer display logic
+	public void Selector() {
+		switch(currentselection) {
+			case 0:
+				// new position of selector
+				x = x0;
+				y = y0;
+			case 1:
+				x = x1;
+				y = y1;
+			case 2:
+				x = x2;
+				y = y2;
+			case 3:
+				x = x3;
+				y = y3;
+			case 4:
+				x = x4;
+				y = y4;
+		}
+	}
+	
+	// When you press enter on selected thing
 	public void enter() {
 		switch(currentselection) {
 			// new game
