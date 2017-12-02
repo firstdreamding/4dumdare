@@ -1,5 +1,4 @@
 package main;
-import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ public class Level {
 		for(int i = 0; i < entities.size(); i++) {
 			entities.get(i).render(screen);
 		}
-		screen.drawString("Day " + day, 160, 80, tr, Color.black);
+		
 	}
 	
 }
