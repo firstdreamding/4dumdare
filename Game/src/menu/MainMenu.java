@@ -129,4 +129,8 @@ public class MainMenu extends Menu {
 		}
 	}
 	
+	public void keyPressed(int code) {
+		
+	}
+	
 }

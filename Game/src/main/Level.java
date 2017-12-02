@@ -31,27 +31,6 @@ public class Level {
 	public Level() {
 		day = 1;
 		basepeople.add(new BasePerson(400, 100, 70, 70));
-		// KEYLISTEN
-		Main.getInstance().window.addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				player.keyPressed(e.getKeyCode());
-
-			}
-
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				player.keyReleased(e.getKeyCode());
-
-			}
-
-		});
 		// Variable Initiation
 		player = new Player(50, 50, 50, 50);
 		iGMenu = new StartingGui();

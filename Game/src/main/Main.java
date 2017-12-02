@@ -2,6 +2,8 @@ package main;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import graphics.Screen;
 import graphics.Window;
@@ -51,6 +53,32 @@ public class Main {
 		screen = window.getScreen();
 		window.show();
 		level = new Level();
+		
+		// KEYLISTEN
+		Main.getInstance().window.addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(state == GAME)
+					level.player.keyPressed(e.getKeyCode());
+				else
+					menu.keyPressed(e.getKeyCode());
+
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(state == GAME)
+					level.player.keyReleased(e.getKeyCode());
+
+			}
+
+		});
 	}
 
 	private void gameLoop() {

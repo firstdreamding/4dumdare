@@ -63,7 +63,12 @@ public class CharacterCreation extends Menu {
 		}
 	}
 	
-	public void NameGang() {
+	public void nameGang() {
 		
 	}
+	
+	public void keyPressed(int code) {
+		
+	}
+	
 }

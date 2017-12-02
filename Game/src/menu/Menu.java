@@ -9,4 +9,8 @@ public class Menu {
 	public void update() {
 		
 	}
+	
+	public void keyPressed(int code) {
+		
+	}
 }
