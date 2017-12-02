@@ -26,6 +26,10 @@ public class IGRaidGui extends IGGui{
 	};
 	Random random = new Random();
 	
+	String[] name;
+	String[] money;
+	String[] prob; 
+	
 	
 	public IGRaidGui(int score, int money) {
 		this.score = score;
@@ -33,17 +37,24 @@ public class IGRaidGui extends IGGui{
 		for(int i = 0; i < 3; i++) {
 			raids[i] = new Raid(score, money, i);
 		}
+		name = new String[3];
+		this.money = new String[3];
+		prob = new String[3];
 		
-		
+		for(int j = 0; j < 3; j++) {
+		name[j] = "Earnable Money: " + raids[j].getMoney();
+		this.money[j] = "Earnable Money: " + raids[j].getMoney();
+		prob[j] = "Prob. of Successful Raid: " + raids[j].getProbMin() + "% to " + raids[j].getProbMax() + "%";
+		}
 		
 		
 	}
 	
 	public void render(Screen screen) {
 		for(int i = 0; i < 3; i++) {
-			screen.drawString(word1[random.nextInt(word1.length)] + word2[random.nextInt(word1.length)] + word3[random.nextInt(word1.length)], 50 + 5*i, 50, tr, Color.BLACK); //change 50 and 50 to something
-			screen.drawString("Earnable Money: " + raids[i].getMoney(), 50 +5*i, 70, tr, Color.black);
-			screen.drawString("Prob. of Successful Raid: " + raids[i].getProbMin() + "% to " + raids[i].getProbMax() + "%", 50 + 5*i, 80, tr, Color.black);
+			screen.drawString(name[i], 50 + 300*i, 50, tr, Color.BLACK); //change 50 and 50 to something
+			screen.drawString(money[i], 50 + 300*i, 70, tr, Color.black);
+			screen.drawString(prob[i], 50 + 300*i, 80, tr, Color.black);
 			
 		}
 	}
