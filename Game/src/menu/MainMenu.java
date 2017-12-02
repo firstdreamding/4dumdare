@@ -66,26 +66,6 @@ public class MainMenu extends Menu{
 		
 	}
 	
-	// Selection
-	public void downPressed() {				// active when you press down key
-		if (currentselection < 5) {
-			currentselection++;
-			Selector();
-		}
-		else {
-			currentselection = 0;
-		}
-	}
-	public void upPressed() {				// active when you press up key
-		if (currentselection > 0) {
-			currentselection--;
-			Selector();
-		}
-		else {
-			currentselection = 4;
-		}
-	}
-	
 	// pointer display logic
 	public void Selector() {
 		switch(currentselection) {
@@ -108,6 +88,26 @@ public class MainMenu extends Menu{
 		}
 	}
 	
+	// Selection
+	public void downPressed() {				// active when you press down key
+		if (currentselection < 5) {
+			currentselection++;
+			Selector();
+		}
+		else {
+			currentselection = 0;
+		}
+	}
+	public void upPressed() {				// active when you press up key
+		if (currentselection > 0) {
+			currentselection--;
+			Selector();
+		}
+		else {
+			currentselection = 4;
+		}
+	}
+	
 	// When you press enter on selected thing
 	public void enter() {
 		switch(currentselection) {
@@ -116,7 +116,7 @@ public class MainMenu extends Menu{
 				Main.getInstance().menu = new CharacterCreation();
 			// continue game
 			case 1:
-			
+				Main.getInstance().menu = new Saves();
 			// options/help
 			case 2:
 				
@@ -125,7 +125,7 @@ public class MainMenu extends Menu{
 				
 			// exit game
 			case 4:
-				
+				Main.getInstance().stop();
 		}
 	}
 	

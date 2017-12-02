@@ -123,7 +123,7 @@ public class Main {
 		}
 	}
 	
-	private void stop() {
+	public void stop() {
 		running = false;
 	}
 
