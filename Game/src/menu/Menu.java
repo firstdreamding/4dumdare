@@ -31,8 +31,8 @@ public class Menu {
 		x = 0;						// x of selector
 		y = 0;						// y of selector
 		
-		selector = ;
-		menuBackground = ;
+		//selector = ;
+		//menuBackground = ;
 	}
 	
 	// Selection
@@ -40,10 +40,16 @@ public class Menu {
 		if (currentselection < 5) {
 			currentselection++;
 		}
+		else {
+			currentselection = 0;
+		}
 	}
 	public void upPressed() {				// active when you press up key
 		if (currentselection > 0) {
 			currentselection--;
+		}
+		else {
+			currentselection = 4;
 		}
 	}
 	
