@@ -1,0 +1,14 @@
+package inGameMenu;
+
+import graphics.Screen;
+
+public class IGMenu {
+	public void render(Screen screen) {
+		
+	}
+	
+	public void update() {
+		
+	}
+	
+}

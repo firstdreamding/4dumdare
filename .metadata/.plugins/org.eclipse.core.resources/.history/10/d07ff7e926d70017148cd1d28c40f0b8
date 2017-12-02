@@ -1,0 +1,16 @@
+package inGameGui;
+
+import main.Main;
+
+public class IGRaidGui extends IGGui{
+	//Raid stuff
+	
+	public void render(Screen screen) {
+		
+	}
+	
+	public void update() {
+		
+	}
+	
+}

@@ -63,12 +63,14 @@ public class Player {
 			for (int i = 0; i < list.size(); i++) {
 				System.out.println(hitbox.width);
 				if (list.get(i).hitbox.intersects(hitbox)) {
-			
+
 					list.get(i).interact();
 					System.out.println("Kappa");
 				}
 			}
 			break;
+		case KeyEvent.VK_R:
+			Main.getInstance().level.inGameMenu = !Main.getInstance().level.inGameMenu;
 		}
 	}
 

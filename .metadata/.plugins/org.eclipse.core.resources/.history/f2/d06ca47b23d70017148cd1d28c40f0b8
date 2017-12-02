@@ -1,0 +1,14 @@
+package inGameGui;
+
+import graphics.Screen;
+
+public class IGGUI {
+	public void render(Screen screen) {
+		
+	}
+	
+	public void update() {
+		
+	}
+	
+}

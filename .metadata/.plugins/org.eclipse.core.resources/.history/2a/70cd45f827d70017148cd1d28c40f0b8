@@ -1,0 +1,17 @@
+package inGameGui;
+
+import main.Main;
+
+public class IGRaidChooseGui extends IGGui{
+	//Raid stuff
+	
+	
+	public IGRaidChooseGui() {
+		//set background
+		for(int i = 0; i < Main.getInstance().level.entities.size(); i++) {
+			//draw out name of gang members in a certain box size, not sure yet
+			//add hitbox
+		}
+	}
+	
+}
