@@ -21,7 +21,7 @@ public class Level {
 	final int LENGTH_OF_DAY = 43200;
 	int day;
 	int dayCounter;
-	int money;
+	public int money;
 	Player player;
 	public boolean inGameMenu;
 	private IGGui iGMenu;

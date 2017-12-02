@@ -18,22 +18,25 @@ public class Raid {
 		switch (amountOfMoneyGrowth) {
 		case 0:
 			//less
-			randomVal = random.nextInt(score) + 1 * random.nextInt(money/5) + 1;
+			randomVal = (int)((random.nextInt(score) + 1 * random.nextInt(money/5) + 1) *(0.5 + (0.5 * random.nextDouble())));
+			probMin = random.nextInt(10)+45;
+			probMax = random.nextInt(10)+80;
 			break;
 		case 1:
-			//same
-			
+			randomVal = random.nextInt(score-5) + 10 * random.nextInt(money/5) + 1;
+			probMin = random.nextInt(10)+30;
+			probMax = random.nextInt(10)+70;
 			break;
 		case 2:
 			//more
-			randomVal = random.nextInt(score) + 1 * random.nextInt(money/5) + 1;
+			randomVal = (int)((random.nextInt(score) + 1 * random.nextInt(money/5) + 1) *(1 + (0.5 * random.nextDouble())));
 			probMin = random.nextInt(10)+5;
 			probMax = random.nextInt(10)+25;
 			break;
 		}
 	}
 
-	public void raid() {
-
+	public boolean raid() {
+		return random.nextInt(100) > (random.nextInt(probMax-probMin));
 	}
 }
