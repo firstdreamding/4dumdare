@@ -29,7 +29,7 @@ public class Main {
 	CharacterCreation charactermenu = new CharacterCreation();
 	Menu menu = charactermenu;
 	Player player;
-	Level level;
+	public Level level;
 	static Main instance;
 
 	public static Main getInstance() {
