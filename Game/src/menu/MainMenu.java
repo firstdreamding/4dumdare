@@ -1,5 +1,7 @@
 package menu;
 
+import java.awt.event.KeyEvent;
+
 import graphics.Screen;
 import graphics.Texture;
 import main.Main;
@@ -7,7 +9,8 @@ import main.Main;
 public class MainMenu extends Menu {
 	// create ints, textures, and stuff here
 	
-	Texture menuBackground;
+	Texture menuOptions;
+	Texture gameTitle;
 	Texture selector;
 	
 	int x;
@@ -38,7 +41,7 @@ public class MainMenu extends Menu {
 			x1 = 700;
 			y1 = 320;
 			
-			x2 = 720;
+			x2 = 715;
 			y2 = 370;
 			
 			x3 = 720;
@@ -51,14 +54,17 @@ public class MainMenu extends Menu {
 			x = x0;
 			y = y0;
 			
-			menuBackground = new Texture("/sprites/MainMenu.png", 960, 540);
+			// textures
+			menuOptions = new Texture("/sprites/MainMenu.png", 960, 540);
+			gameTitle = new Texture("/sprites/Name.png", 960, 540);
 			selector = new Texture("/sprites/Selector.png", 64, 64);
 		}
 	
 	// render
 	public void render(Screen screen) {
 		screen.fillRect(0, 0, 960, 540, 0x000000);
-		screen.drawTexture(0, 0, menuBackground);
+		screen.drawTexture(0, 0, menuOptions);
+		screen.drawTexture(0, 0, gameTitle);
 		
 		screen.drawTexture(x, y, selector);
 	}
@@ -73,18 +79,23 @@ public class MainMenu extends Menu {
 				// new position of selector
 				x = x0;
 				y = y0;
+				break;
 			case 1:
 				x = x1;
 				y = y1;
+				break;
 			case 2:
 				x = x2;
 				y = y2;
+				break;
 			case 3:
 				x = x3;
 				y = y3;
+				break;
 			case 4:
 				x = x4;
 				y = y4;
+				break;
 		}
 	}
 	
@@ -114,23 +125,38 @@ public class MainMenu extends Menu {
 			// new game
 			case 0:
 				Main.getInstance().menu = new CharacterCreation();
+				break;
 			// continue game
 			case 1:
 				Main.getInstance().menu = new Saves();
+				break;
 			// options/help
 			case 2:
-				
+				break;
 			// credits
 			case 3:
-				
+				break;
 			// exit game
 			case 4:
 				Main.getInstance().stop();
+				break;
 		}
 	}
 	
+	// key listener
 	public void keyPressed(int code) {
-		
+		switch(code) {
+			case KeyEvent.VK_UP:
+				upPressed();
+				break;
+			case KeyEvent.VK_DOWN:
+				downPressed();
+				break;
+				
+			case KeyEvent.VK_ENTER:
+				enter();
+				break;
+		}
 	}
 	
 }

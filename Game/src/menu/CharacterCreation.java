@@ -1,5 +1,7 @@
 package menu;
 
+import java.awt.event.KeyEvent;
+
 import graphics.Screen;
 import graphics.Texture;
 
@@ -47,19 +49,19 @@ public class CharacterCreation extends Menu {
 		switch(currentcharacter) {
 			// character 1
 			case 0:
-				
+				break;
 			// character 2
 			case 1:
-			
+				break;
 			// character 3
 			case 2:
-				
+				break;
 			// character 4
 			case 3:
-				
+				break;
 			// character 5
 			case 4:
-				
+				break;
 		}
 	}
 	
@@ -67,8 +69,20 @@ public class CharacterCreation extends Menu {
 		
 	}
 	
+	// key listener
 	public void keyPressed(int code) {
-		
+		switch(code) {
+			case KeyEvent.VK_RIGHT:
+				rightPressed();
+				break;
+			case KeyEvent.VK_LEFT:
+				leftPressed();
+				break;
+				
+			case KeyEvent.VK_ENTER:
+				enter();
+				break;
+		}
 	}
 	
 }
