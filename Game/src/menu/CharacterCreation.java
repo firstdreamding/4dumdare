@@ -62,8 +62,4 @@ public class CharacterCreation extends Menu {
 				
 		}
 	}
-	
-	public void NameGang() {
-		
-	}
 }

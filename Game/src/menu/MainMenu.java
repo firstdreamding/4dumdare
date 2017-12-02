@@ -4,7 +4,7 @@ import graphics.Screen;
 import graphics.Texture;
 import main.Main;
 
-public class MainMenu extends Menu {
+public class MainMenu extends Menu{
 	// create ints, textures, and stuff here
 	
 	Texture menuBackground;
@@ -31,20 +31,20 @@ public class MainMenu extends Menu {
 			currentselection = 0;		// the selected thing
 			
 			// starting position for selector
-			x0 = 690;					// x of selector
+			x0 = 700;					// x of selector
 			y0 = 275;					// y of selector
 			
 			// more positions
-			x1 = 700;
-			y1 = 320;
+			x1 = 710;
+			y1 = 325;
 			
-			x2 = 720;
-			y2 = 370;
+			x2 = 730;
+			y2 = 375;
 			
-			x3 = 720;
-			y3 = 415;
+			x3 = 730;
+			y3 = 425;
 			
-			x4 = 780;
+			x4 = 770;
 			y4 = 460;
 			
 			// setting start position of selector
@@ -57,13 +57,33 @@ public class MainMenu extends Menu {
 	
 	// render
 	public void render(Screen screen) {
-		screen.fillRect(0, 0, 960, 540, 0x000000);
+		screen.drawRect(0, 0, 960, 540, 0x000000);
 		screen.drawTexture(0, 0, menuBackground);
 		
 		screen.drawTexture(x, y, selector);
 	}
 	public void update() {
 		
+	}
+	
+	// Selection
+	public void downPressed() {				// active when you press down key
+		if (currentselection < 5) {
+			currentselection++;
+			Selector();
+		}
+		else {
+			currentselection = 0;
+		}
+	}
+	public void upPressed() {				// active when you press up key
+		if (currentselection > 0) {
+			currentselection--;
+			Selector();
+		}
+		else {
+			currentselection = 4;
+		}
 	}
 	
 	// pointer display logic
@@ -88,26 +108,6 @@ public class MainMenu extends Menu {
 		}
 	}
 	
-	// Selection
-	public void downPressed() {				// active when you press down key
-		if (currentselection < 5) {
-			currentselection++;
-			Selector();
-		}
-		else {
-			currentselection = 0;
-		}
-	}
-	public void upPressed() {				// active when you press up key
-		if (currentselection > 0) {
-			currentselection--;
-			Selector();
-		}
-		else {
-			currentselection = 4;
-		}
-	}
-	
 	// When you press enter on selected thing
 	public void enter() {
 		switch(currentselection) {
@@ -116,7 +116,7 @@ public class MainMenu extends Menu {
 				Main.getInstance().menu = new CharacterCreation();
 			// continue game
 			case 1:
-				Main.getInstance().menu = new Saves();
+			
 			// options/help
 			case 2:
 				
@@ -125,7 +125,7 @@ public class MainMenu extends Menu {
 				
 			// exit game
 			case 4:
-				Main.getInstance().stop();
+				
 		}
 	}
 	
