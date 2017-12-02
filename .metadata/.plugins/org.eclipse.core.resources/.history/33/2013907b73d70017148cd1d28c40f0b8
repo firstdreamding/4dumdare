@@ -1,7 +1,5 @@
 package inGameGui;
 
-import java.awt.Point;
-
 import graphics.Screen;
 
 public class IGGui {

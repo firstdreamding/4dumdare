@@ -1,8 +1,5 @@
 package inGameGui;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +15,6 @@ public class IGRaidChooseGui extends IGGui{
 	List<GangBoi> members;
 	List<GangBoi> selectedMembers;
 	Hitbox done;
-	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	
 	public IGRaidChooseGui() {
 		raidHitbox = new ArrayList<Hitbox>();
@@ -37,26 +33,14 @@ public class IGRaidChooseGui extends IGGui{
 	}
 	
 	public void update() {
-
+		//check if hitbox was hit
+		for(int i = 0; i < raidHitbox.size(); i++) {
+			//if mouse pointer point in in hibox
+			
+		}
 	}
 	
 	public void render(Screen screen) {
 		//render background
-		
-		//draw gang member names
-		for(int i = 0; i < members.size(); i++) {
-			screen.drawString(members.get(i).getName(), (int) (raidHitbox.get(i).getX()), (int)(raidHitbox.get(i).getY()), tr, Color.BLACK);
-		}
-		
-		//render selection
-	}
-	
-	public void point(Point point) {
-		//check if hitbox was hit
-		for(int i = 0; i < raidHitbox.size(); i++) {
-			//if mouse pointer point in in hibox		
-			selectedMembers.add(members.get(i));
-			
-		}
 	}
 }

@@ -4,7 +4,6 @@ import graphics.Screen;
 
 public class GangBoi {
 	int att, def, luc, loy, acc;
-	String name;
 	private int totalScore = 0;
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1) {
@@ -28,9 +27,5 @@ public class GangBoi {
 
 	public void setTotalScore(int totalScore) {
 		this.totalScore = totalScore;
-	}
-	
-	public String getName() {
-		return name;
 	}
 }

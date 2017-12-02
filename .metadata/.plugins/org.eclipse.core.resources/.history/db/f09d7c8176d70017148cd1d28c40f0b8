@@ -45,7 +45,7 @@ public class IGRaidChooseGui extends IGGui{
 		
 		//draw gang member names
 		for(int i = 0; i < members.size(); i++) {
-			screen.drawString(members.get(i).getName(), (int) (raidHitbox.get(i).getX()), (int)(raidHitbox.get(i).getY()), tr, Color.BLACK);
+			screen.drawString(members.get(i).getName(), raidHitbox.get(i).getX(), raidHitbox.get(i).getY(), tr, Color.BLACK);
 		}
 		
 		//render selection
