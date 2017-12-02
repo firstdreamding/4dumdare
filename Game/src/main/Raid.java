@@ -1,21 +1,24 @@
 package main;
 
-import java.util.List;
-
-import entity.GangBoi;
+import java.util.Random;
 
 public class Raid {
 	int raidScore;
 	int money;
 	int probMin;
 	int probMax;
+	int randomVal;
 
-	public Raid(int score, int amountOfMoneyGrowth) {
+	
+	Random random = new Random();
+
+	public Raid(int score, int money, int amountOfMoneyGrowth) {
+		
 		raidScore = score;
 		switch (amountOfMoneyGrowth) {
 		case 0:
 			//less
-			
+			randomVal = random.nextInt(score) + 1 * random.nextInt(money/5) + 1;
 			break;
 		case 1:
 			//same
@@ -23,7 +26,9 @@ public class Raid {
 			break;
 		case 2:
 			//more
-			
+			randomVal = random.nextInt(score) + 1 * random.nextInt(money/5) + 1;
+			probMin = random.nextInt(10)+5;
+			probMax = random.nextInt(10)+25;
 			break;
 		}
 	}
