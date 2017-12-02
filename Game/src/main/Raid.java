@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Raid {
 	int raidScore;
-	int money;
-	int probMin;
-	int probMax;
+	private int money;
+	private int probMin;
+	private int probMax;
 	int randomVal;
 
 	
@@ -38,5 +38,29 @@ public class Raid {
 
 	public boolean raid() {
 		return random.nextInt(100) > (random.nextInt(probMax-probMin));
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
+	public int getProbMin() {
+		return probMin;
+	}
+
+	public void setProbMin(int probMin) {
+		this.probMin = probMin;
+	}
+
+	public int getProbMax() {
+		return probMax;
+	}
+
+	public void setProbMax(int probMax) {
+		this.probMax = probMax;
 	}
 }

@@ -12,6 +12,7 @@ import entity.GangBoi;
 import entity.Player;
 import graphics.Screen;
 import inGameGui.IGGui;
+import inGameGui.IGRaidGui;
 import inGameGui.StartingGui;
 
 public class Level {
@@ -33,7 +34,8 @@ public class Level {
 		basepeople.add(new BasePerson(400, 100, 70, 70));
 		// Variable Initiation
 		player = new Player(50, 50, 50, 50);
-		iGMenu = new StartingGui();
+		money = 2058;
+		iGMenu = new IGRaidGui(100, 2058);
 	}
 
 	public void update() {

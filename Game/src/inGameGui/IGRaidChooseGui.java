@@ -62,7 +62,7 @@ public class IGRaidChooseGui extends IGGui{
 		}
 		
 		if(done.contains(point)) {
-			Main.getInstance().level.setiGMenu(new IGRaidGui(score));
+			Main.getInstance().level.setiGMenu(new IGRaidGui(score, Main.getInstance().level.money));
 		}	
 	}
 }
