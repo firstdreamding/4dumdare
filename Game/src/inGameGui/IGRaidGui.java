@@ -11,18 +11,19 @@ import main.Raid;
 public class IGRaidGui extends IGGui{
 	//Raid stuff
 	
-	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
+	Font tr = new Font("Rockwell", Font.PLAIN, 16);
+	Font tr2 = new Font("Rockwell", Font.BOLD, 16);
 	int score;
 	Raid[] raids;
 	
 	String[] word1 = {
-			"","The","Weird","Blue","Silent","Jade","Fun"
+			"","The","Weird","Blue","Silent","Jade","Fun","Dumb","Flashy"
 	};
 	String[] word2 = {
-			"","Punk","Disco","Floss","Pine Tree","Blood","Undead","Rainbow","Shadows", "Gun", "Unicorns"
+			"","Punk","Disco","Floss","Pine Tree","Blood","Undead","Rainbow","Shadows", "Gun", "Unicorns","Banana","Emoji"
 	};
 	String[] word3 = {
-			"","Gang","Squad","Mafia","Kings", "Boys", "Guys", "Turtles"
+			"","Gang","Squad","Mafia","Kings","Boys","Guys","Turtles","Dragons","Eagles","Potatoes"
 	};
 	Random random = new Random();
 	
@@ -52,9 +53,9 @@ public class IGRaidGui extends IGGui{
 	
 	public void render(Screen screen) {
 		for(int i = 0; i < 3; i++) {
-			screen.drawString(name[i], 50 + 300*i, 50, tr, Color.BLACK); //change 50 and 50 to something
-			screen.drawString(money[i], 50 + 300*i, 70, tr, Color.black);
-			screen.drawString(prob[i], 50 + 300*i, 80, tr, Color.black);
+			screen.drawString(name[i], 50 + 300*i, 50, tr2, Color.BLACK); //change 50 and 50 to something
+			screen.drawString(money[i], 50 + 300*i, 80, tr, Color.black);
+			screen.drawString(prob[i], 50 + 300*i, 100, tr, Color.black);
 			
 		}
 	}
