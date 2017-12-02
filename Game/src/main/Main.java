@@ -2,8 +2,10 @@ package main;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import Entity.Player;
+import entity.Player;
 import graphics.Screen;
 import graphics.Window;
 import menu.Menu;
@@ -37,6 +39,27 @@ public class Main {
 		window = new Window("Connect Subjects", 960, 540);
 		screen = window.getScreen();
 		window.show();
+		// KEYLISTEN
+		window.addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				player.keyPressed(e.getKeyCode());
+
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				player.keyReleased(e.getKeyCode());
+
+			}
+
+		});
 		// Variable Initiation
 		player = new Player(50, 50);
 	}
@@ -130,7 +153,7 @@ public class Main {
 		if (state == MENU) {
 
 		} else if (state == GAME) {
-
+			player.update();
 		}
 	}
 
