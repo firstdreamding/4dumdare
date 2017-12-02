@@ -1,16 +1,19 @@
 package main;
+
 import java.awt.Color;
 import java.awt.Font;
 
 import graphics.Screen;
-import graphics.SpriteSheet;
-import graphics.Texture;
 import graphics.Window;
+import menu.Menu;
 
 public class Main {
 
 	Window window;
 	Screen screen;
+	final int MENU = 0;
+	final int GAME = 1;
+	public int state = MENU;
 	private boolean running;
 	private boolean isPause;
 	private int fps = 60;
@@ -18,7 +21,7 @@ public class Main {
 	private int ups;
 	private int frameCount = 0;
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
-
+	Menu menu = new Menu();
 
 	public static void main(String[] args) {
 		Main main = new Main();
@@ -43,7 +46,7 @@ public class Main {
 
 		// If we are able to get as high as this FPS, don't render again.
 		final double TARGET_FPS = 60;
-		//1000000000 = amount of nanoseconds in 1 second.
+		// 1000000000 = amount of nanoseconds in 1 second.
 		final double TARGET_TIME_BETWEEN_RENDERS = 1000000000 / TARGET_FPS;
 
 		// Simple way of finding FPS.
@@ -105,14 +108,24 @@ public class Main {
 	}
 
 	private void render(Screen screen) {
-		window.update();
-		screen.clear(0xffffff);
-		screen.drawString("Fps " + fps, 40, 40, tr, Color.black);
-		screen.drawString("Ups " + ups, 40, 80, tr, Color.black);
-		frameCount++;
+		if (state == MENU) {
+			window.update();
+			screen.clear(0xffffff);
+			menu.render(screen);
+		} else if (state == GAME) {
+			window.update();
+			screen.clear(0xffffff);
+			screen.drawString("Fps " + fps, 40, 40, tr, Color.black);
+			screen.drawString("Ups " + ups, 40, 80, tr, Color.black);
+			frameCount++;
+		}
 	}
 
 	private void update() {
+		if (state == MENU) {
+		} else if (state == GAME) {
+			System.out.println("GAME");
+		}
 	}
 
 }
