@@ -2,7 +2,10 @@ package main;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
+import entity.Player;
 import graphics.Screen;
 import graphics.Window;
 import menu.Menu;
@@ -13,7 +16,7 @@ public class Main {
 	Screen screen;
 	final int MENU = 0;
 	final int GAME = 1;
-	public int state = MENU;
+	public int state = GAME;
 	private boolean running;
 	private boolean isPause;
 	private int fps = 60;
@@ -22,6 +25,7 @@ public class Main {
 	private int frameCount = 0;
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	Menu menu = new Menu();
+	Player player;
 
 	public static void main(String[] args) {
 		Main main = new Main();
@@ -35,6 +39,29 @@ public class Main {
 		window = new Window("Connect Subjects", 960, 540);
 		screen = window.getScreen();
 		window.show();
+		// KEYLISTEN
+		window.addKeyListener(new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				player.keyPressed(e.getKeyCode());
+
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				player.keyReleased(e.getKeyCode());
+
+			}
+
+		});
+		// Variable Initiation
+		player = new Player(50, 50);
 	}
 
 	private void gameLoop() {
@@ -117,14 +144,16 @@ public class Main {
 			screen.clear(0xffffff);
 			screen.drawString("Fps " + fps, 40, 40, tr, Color.black);
 			screen.drawString("Ups " + ups, 40, 80, tr, Color.black);
+			player.render(screen);
 			frameCount++;
 		}
 	}
 
 	private void update() {
 		if (state == MENU) {
+
 		} else if (state == GAME) {
-			System.out.println("GAME");
+			player.update();
 		}
 	}
 
