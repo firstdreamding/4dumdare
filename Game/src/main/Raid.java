@@ -15,10 +15,15 @@ public class Raid {
 		switch (amountOfMoneyGrowth) {
 		case 0:
 			//less
+			
 			break;
 		case 1:
+			//same
+			
 			break;
 		case 2:
+			//more
+			
 			break;
 		}
 	}
