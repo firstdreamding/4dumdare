@@ -11,8 +11,8 @@ public class Player {
 	final int up = -1;
 	final int down = 1;
 	Texture sprite;
-	int x, y, xvel, yvel, speed, xdir, ydir;
-
+	int x, y, xvel, yvel, speed, xdir, ydir,w,h;
+	Hitbox hitbox = new Hitbox(x,y,w,h);
 	public Player(int x1, int y1) {
 		x = x1;
 		y = y1;
