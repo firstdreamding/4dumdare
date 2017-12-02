@@ -9,10 +9,6 @@ public class Level {
 	
 	List<GangBoi> somelist = new ArrayList<GangBoi>(); 
 	
-	public Level() {
-		
-	}
-	
 	public void update() {
 		
 	}

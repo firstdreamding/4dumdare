@@ -1,6 +1,7 @@
 package main;
+
+import java.awt.List;
 import java.util.ArrayList;
-import java.util.List;
 
 import entity.GangBoi;
 import graphics.Screen;
@@ -8,10 +9,6 @@ import graphics.Screen;
 public class Level {
 	
 	List<GangBoi> somelist = new ArrayList<GangBoi>(); 
-	
-	public Level() {
-		
-	}
 	
 	public void update() {
 		
