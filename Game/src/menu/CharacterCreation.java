@@ -3,7 +3,7 @@ package menu;
 import graphics.Screen;
 import graphics.Texture;
 
-public class CharacterCreation {
+public class CharacterCreation extends Menu {
 	// create ints, textures, and stuff here
 	
 	Texture creationBackground;
@@ -21,7 +21,7 @@ public class CharacterCreation {
 	public void CharacterCreator() {
 		currentcharacter = 0;	
 		
-		//menuBackground = ;
+		//creationBackground = ;
 	}
 	
 	// Selection
