@@ -11,13 +11,13 @@ public class IGRaidGui extends IGGui{
 	Raid[] raids;
 	
 	String[] word1 = {
-			"",""
+			"","The","Weird","Blue","Silent","Jade","Fun"
 	};
 	String[] word2 = {
-			"",""
+			"","Punk","Disco","Floss","Pine Tree","Blood","Undead","Rainbow","Shadows"
 	};
 	String[] word3 = {
-			"",""
+			"","Gang","Squad","Mafia","Kings"
 	};
 
 	public IGRaidGui(int score) {
