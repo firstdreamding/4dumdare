@@ -3,12 +3,12 @@ package menu;
 import graphics.Screen;
 import graphics.Texture;
 
-public class CharacterCreation extends Menu {
+public class Saves extends Menu {
 	// create ints, textures, and stuff here
 	
-	Texture creationBackground;
+	Texture savesBackground;
 	
-	int currentcharacter;
+	int currentsave;
 	
 	// render
 	public void render(Screen screen) {
@@ -18,47 +18,41 @@ public class CharacterCreation extends Menu {
 		
 	}
 	
-	public void CharacterCreator() {
-		currentcharacter = 0;	
+	public Saves() {
+		currentsave = 0;	
 		
-		//creationBackground = ;
+		//savesBackground = ;
 	}
 	
 	// Selection
 	public void rightPressed() {				// active when you press right key
-		if (currentcharacter < 5) {
-			currentcharacter ++;
+		if (currentsave < 3) {
+			currentsave ++;
 		}
 		else {
-			currentcharacter  = 0;
+			currentsave  = 0;
 		}
 	}
 	public void leftPressed() {					// active when you press left key
-		if (currentcharacter  > 0) {
-			currentcharacter --;
+		if (currentsave  > 0) {
+			currentsave --;
 		}
 		else {
-			currentcharacter  = 4;
+			currentsave  = 2;
 		}
 	}
 	
 	//When you press enter on selected thing
 	public void enter() {
-		switch(currentcharacter) {
-			// character 1
+		switch(currentsave) {
+			// save slot 1
 			case 0:
 				
-			// character 2
+			// save slot 2
 			case 1:
 			
-			// character 3
+			// save slot 3
 			case 2:
-				
-			// character 4
-			case 3:
-				
-			// character 5
-			case 4:
 				
 		}
 	}

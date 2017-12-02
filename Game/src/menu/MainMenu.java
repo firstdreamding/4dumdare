@@ -2,6 +2,7 @@ package menu;
 
 import graphics.Screen;
 import graphics.Texture;
+import main.Main;
 
 public class MainMenu extends Menu{
 	// create ints, textures, and stuff here
@@ -57,7 +58,7 @@ public class MainMenu extends Menu{
 		switch(currentselection) {
 			// new game
 			case 0:
-				
+				Main.getInstance().menu = new CharacterCreation();
 			// continue game
 			case 1:
 			

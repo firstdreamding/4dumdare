@@ -25,7 +25,7 @@ public class Main {
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	MainMenu mainmenu = new MainMenu();
 	CharacterCreation charactermenu = new CharacterCreation();
-	Menu menu = charactermenu;
+	public Menu menu = charactermenu;
 	public Level level;
 	static Main instance;
 
