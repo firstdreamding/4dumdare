@@ -75,7 +75,6 @@ public class Main {
 		});
 		// Variable Initiation
 		player = new Player(50, 50);
-		level = new Level();
 	}
 
 	private void gameLoop() {
@@ -157,7 +156,6 @@ public class Main {
 			screen.drawString("Fps " + fps, 40, 40, tr, Color.black);
 			screen.drawString("Ups " + ups, 40, 80, tr, Color.black);
 			player.render(screen);
-			level.render(screen);
 			frameCount++;
 		}
 	}
@@ -167,7 +165,6 @@ public class Main {
 
 		} else if (state == GAME) {
 			player.update();
-			level.update();
 		}
 	}
 

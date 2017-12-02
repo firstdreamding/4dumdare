@@ -1,6 +1,4 @@
 package main;
-import java.awt.Color;
-import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +11,9 @@ public class Level {
 	final int LENGTH_OF_DAY = 43200;
 	int day;
 	int dayCounter;
-	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	
 	public Level() {
-		day = 1;
+		
 	}
 	
 	public void update() {
@@ -34,7 +31,6 @@ public class Level {
 		for(int i = 0; i < entities.size(); i++) {
 			entities.get(i).render(screen);
 		}
-		screen.drawString("Day " + day, 160, 80, tr, Color.black);
 	}
 	
 }

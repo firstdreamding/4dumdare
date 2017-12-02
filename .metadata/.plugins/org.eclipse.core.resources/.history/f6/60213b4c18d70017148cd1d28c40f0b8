@@ -157,7 +157,6 @@ public class Main {
 			screen.drawString("Fps " + fps, 40, 40, tr, Color.black);
 			screen.drawString("Ups " + ups, 40, 80, tr, Color.black);
 			player.render(screen);
-			level.render(screen);
 			frameCount++;
 		}
 	}
@@ -167,7 +166,6 @@ public class Main {
 
 		} else if (state == GAME) {
 			player.update();
-			level.update();
 		}
 	}
 
