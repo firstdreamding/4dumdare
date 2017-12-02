@@ -27,10 +27,10 @@ public class MainMenu extends Menu{
 	
 	// render
 	public void render(Screen screen) {
-		//screen.drawRect(0, 0, 1000, 1000, 0x00ff00);
+		screen.drawRect(0, 0, 1000, 1000, 0x000000);
 		screen.drawTexture(0, 0, menuBackground);
 		
-		screen.drawTexture(x, y, selector);
+		//screen.drawTexture(x, y, selector);
 	}
 	public void update() {
 		
