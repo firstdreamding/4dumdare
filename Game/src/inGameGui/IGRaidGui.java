@@ -42,7 +42,7 @@ public class IGRaidGui extends IGGui{
 		prob = new String[3];
 		
 		for(int j = 0; j < 3; j++) {
-		name[j] = "Earnable Money: " + raids[j].getMoney();
+		name[j] = word1[random.nextInt(word1.length)]+ " "+word2[random.nextInt(word2.length)]+ " " + word3[random.nextInt(word3.length)];
 		this.money[j] = "Earnable Money: " + raids[j].getMoney();
 		prob[j] = "Prob. of Successful Raid: " + raids[j].getProbMin() + "% to " + raids[j].getProbMax() + "%";
 		}
