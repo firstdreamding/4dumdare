@@ -4,7 +4,7 @@ import graphics.Screen;
 import graphics.Texture;
 import main.Main;
 
-public class MainMenu extends Menu{
+public class MainMenu extends Menu {
 	// create ints, textures, and stuff here
 	
 	Texture menuBackground;
@@ -31,20 +31,20 @@ public class MainMenu extends Menu{
 			currentselection = 0;		// the selected thing
 			
 			// starting position for selector
-			x0 = 700;					// x of selector
+			x0 = 690;					// x of selector
 			y0 = 275;					// y of selector
 			
 			// more positions
-			x1 = 710;
-			y1 = 325;
+			x1 = 700;
+			y1 = 320;
 			
-			x2 = 730;
-			y2 = 375;
+			x2 = 720;
+			y2 = 370;
 			
-			x3 = 730;
-			y3 = 425;
+			x3 = 720;
+			y3 = 415;
 			
-			x4 = 770;
+			x4 = 780;
 			y4 = 460;
 			
 			// setting start position of selector
@@ -57,7 +57,7 @@ public class MainMenu extends Menu{
 	
 	// render
 	public void render(Screen screen) {
-		screen.drawRect(0, 0, 960, 540, 0x000000);
+		screen.fillRect(0, 0, 960, 540, 0x000000);
 		screen.drawTexture(0, 0, menuBackground);
 		
 		screen.drawTexture(x, y, selector);
