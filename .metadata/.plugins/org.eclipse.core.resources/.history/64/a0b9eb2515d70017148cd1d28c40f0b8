@@ -135,11 +135,13 @@ public class Main {
 	}
 
 	private void render(Screen screen) {
-		window.update();
-		screen.clear(0xffffff);
 		if (state == MENU) {
+			window.update();
+			screen.clear(0xffffff);
 			menu.render(screen);
 		} else if (state == GAME) {
+			window.update();
+			screen.clear(0xffffff);
 			screen.drawString("Fps " + fps, 40, 40, tr, Color.black);
 			screen.drawString("Ups " + ups, 40, 80, tr, Color.black);
 			player.render(screen);
