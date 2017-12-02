@@ -1,7 +1,0 @@
-package inGameGui;
-
-public class IGGangMembersGui extends IGGui{
-	
-	
-	
-}

@@ -1,7 +1,0 @@
-package main;
-
-public class Raid {
-	public Raid(int numberOfPlayerGang, ){
-		
-	}
-}
