@@ -1,9 +1,11 @@
 package entity;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import graphics.Screen;
 import graphics.Texture;
+import main.Main;
 
 public class Player {
 	final int left = -1;
@@ -29,14 +31,14 @@ public class Player {
 	public void update() {
 		x += xvel;
 		y += yvel;
-		hitbox.set(x,y,w,h);
+		hitbox.set(x, y, w, h);
 	}
 
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, sprite);
-		screen.drawRect(hitbox.x,hitbox.y,hitbox.width,hitbox.height,0xff0000);
+		screen.drawRect(hitbox.x, hitbox.y, hitbox.width, hitbox.height, 0xff0000);
 	}
-	
+
 	public void keyPressed(int code) {
 		switch (code) {
 		case KeyEvent.VK_LEFT:
@@ -54,6 +56,18 @@ public class Player {
 		case KeyEvent.VK_UP:
 			yvel = -speed;
 			ydir = up;
+			break;
+		case KeyEvent.VK_Z:
+			System.out.println("xd");
+			List<BasePerson> list = Main.getInstance().level.basepeople;
+			for (int i = 0; i < list.size(); i++) {
+				System.out.println(hitbox.width);
+				if (list.get(i).hitbox.intersects(hitbox)) {
+			
+					list.get(i).interact();
+					System.out.println("Kappa");
+				}
+			}
 			break;
 		}
 	}
