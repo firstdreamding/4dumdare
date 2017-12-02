@@ -1,0 +1,11 @@
+package main;
+
+import java.util.List;
+
+import entity.BasePerson;
+
+public class Raid {
+	public Raid(List<BasePerson> basepeople){
+		
+	}
+}

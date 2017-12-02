@@ -16,6 +16,8 @@ public class Level {
 	final int LENGTH_OF_DAY = 43200;
 	int day;
 	int dayCounter;
+	int money;
+	
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 
 	public Level() {
