@@ -6,14 +6,24 @@ import entity.GangBoi;
 
 public class Raid {
 	int raidScore;
-	public Raid(List<GangBoi> people) {
-		raidScore = 0;
-		for(int i = 0; i < people.size(); i++) {
-			raidScore += people.get(i).getTotalScore();
+	int money;
+	int probMin;
+	int probMax;
+
+	public Raid(int score, int amountOfMoneyGrowth) {
+		raidScore = score;
+		switch (amountOfMoneyGrowth) {
+		case 0:
+			//less
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
 		}
 	}
 
-	public void raidList() {
-		
+	public void raid() {
+
 	}
 }

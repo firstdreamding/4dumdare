@@ -24,7 +24,7 @@ public class Level {
 	int money;
 	Player player;
 	public boolean inGameMenu;
-	IGGui iGMenu;
+	private IGGui iGMenu;
 	
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 
@@ -87,6 +87,14 @@ public class Level {
 		if(inGameMenu) {
 			iGMenu.render(screen);
 		}
+	}
+
+	public IGGui getiGMenu() {
+		return iGMenu;
+	}
+
+	public void setiGMenu(IGGui iGMenu) {
+		this.iGMenu = iGMenu;
 	}
 
 }

@@ -18,6 +18,7 @@ public class IGRaidChooseGui extends IGGui{
 	List<GangBoi> members;
 	List<GangBoi> selectedMembers;
 	Hitbox done;
+	int score;
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	
 	public IGRaidChooseGui() {
@@ -48,6 +49,8 @@ public class IGRaidChooseGui extends IGGui{
 			screen.drawString(members.get(i).getName(), (int) (raidHitbox.get(i).getX()), (int)(raidHitbox.get(i).getY()), tr, Color.BLACK);
 		}
 		
+		
+		
 		//render selection
 	}
 	
@@ -56,7 +59,10 @@ public class IGRaidChooseGui extends IGGui{
 		for(int i = 0; i < raidHitbox.size(); i++) {
 			//if mouse pointer point in in hibox		
 			selectedMembers.add(members.get(i));
-			
 		}
+		
+		if(done.contains(point)) {
+			Main.getInstance().level.setiGMenu(new IGRaidGui(score));
+		}	
 	}
 }
