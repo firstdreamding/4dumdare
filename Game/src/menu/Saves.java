@@ -1,5 +1,7 @@
 package menu;
 
+import java.awt.event.KeyEvent;
+
 import graphics.Screen;
 import graphics.Texture;
 
@@ -47,13 +49,29 @@ public class Saves extends Menu {
 		switch(currentsave) {
 			// save slot 1
 			case 0:
-				
+				break;
 			// save slot 2
 			case 1:
-			
+				break;
 			// save slot 3
 			case 2:
+				break;
+		}
+	}
+	
+	// key listener
+	public void keyPressed(int code) {
+		switch(code) {
+			case KeyEvent.VK_RIGHT:
+				rightPressed();
+				break;
+			case KeyEvent.VK_LEFT:
+				leftPressed();
+				break;
 				
+			case KeyEvent.VK_ENTER:
+				enter();
+				break;
 		}
 	}
 }
