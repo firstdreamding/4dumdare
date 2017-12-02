@@ -12,8 +12,7 @@ import menu.CharacterCreation;
 import menu.MainMenu;
 import menu.Menu;
 
-public class Main {
-
+public class Main {	
 	Window window;
 	Screen screen;
 	final int MENU = 0;
@@ -30,6 +29,15 @@ public class Main {
 	CharacterCreation charactermenu = new CharacterCreation();
 	Menu menu = charactermenu;
 	Player player;
+	static Main instance;
+	
+	public static Main getInstance() {
+		return instance;
+	}
+	
+	public Main() {
+		instance = this;
+	}
 
 	public static void main(String[] args) {
 		Main main = new Main();

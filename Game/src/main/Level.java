@@ -7,7 +7,7 @@ import graphics.Screen;
 
 public class Level {
 	
-	List<GangBoi> somelist = new ArrayList<GangBoi>(); 
+	List<GangBoi> entities = new ArrayList<GangBoi>(); 
 	
 	public Level() {
 		
@@ -18,7 +18,9 @@ public class Level {
 	}
 	
 	public void render(Screen screen) {
-		
+		for(int i = 0; i < entities.size(); i++) {
+			
+		}
 	}
 	
 }
