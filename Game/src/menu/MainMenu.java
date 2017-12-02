@@ -18,19 +18,20 @@ public class MainMenu extends Menu{
 		public MainMenu() {
 			currentselection = 0;		// the selected thing
 			
+			// starting position for selector
 			x = 0;						// x of selector
 			y = 0;						// y of selector
 			
-			//selector = ;
 			menuBackground = new Texture("/sprites/MainMenu.png", 960, 540);
+			selector = new Texture("/sprites/Selector.png", 64, 64);
 		}
 	
 	// render
 	public void render(Screen screen) {
-		screen.drawRect(0, 0, 1000, 1000, 0x000000);
+		screen.drawRect(0, 0, 960, 540, 0x000000);
 		screen.drawTexture(0, 0, menuBackground);
 		
-		//screen.drawTexture(x, y, selector);
+		screen.drawTexture(x, y, selector);
 	}
 	public void update() {
 		
