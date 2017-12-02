@@ -58,14 +58,10 @@ public class Player {
 			ydir = up;
 			break;
 		case KeyEvent.VK_Z:
-			System.out.println("xd");
 			List<BasePerson> list = Main.getInstance().level.basepeople;
 			for (int i = 0; i < list.size(); i++) {
-				System.out.println(hitbox.width);
 				if (list.get(i).hitbox.intersects(hitbox)) {
-
 					list.get(i).interact();
-					System.out.println("Kappa");
 				}
 			}
 			break;

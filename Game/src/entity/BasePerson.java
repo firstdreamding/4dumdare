@@ -15,10 +15,10 @@ public class BasePerson {
 	}
 
 	public void render(Screen screen) {
-		screen.drawRect(x, y, hitbox.width, h, 0xff0000);
+		screen.drawRect(x, y, hitbox.width, hitbox.height, 0xff0000);
 	}
 
 	public void interact() {
-
+		System.out.println("ez");
 	}
 }
