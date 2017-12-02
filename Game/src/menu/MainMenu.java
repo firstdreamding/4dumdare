@@ -2,6 +2,7 @@ package menu;
 
 import graphics.Screen;
 import graphics.Texture;
+import main.Main;
 
 public class MainMenu extends Menu{
 	// create ints, textures, and stuff here
@@ -13,25 +14,26 @@ public class MainMenu extends Menu{
 	int y;
 	int currentselection;
 	
+	// constructor
+		public MainMenu() {
+			currentselection = 0;		// the selected thing
+			
+			x = 0;						// x of selector
+			y = 0;						// y of selector
+			
+			//selector = ;
+			menuBackground = new Texture("/sprites/MainMenu.png", 960, 540);
+		}
+	
 	// render
 	public void render(Screen screen) {
-		screen.drawRect(0, 0, 1000, 1000, 0x00ff00);
+		//screen.drawRect(0, 0, 1000, 1000, 0x00ff00);
+		screen.drawTexture(0, 0, menuBackground);
 		
 		screen.drawTexture(x, y, selector);
 	}
 	public void update() {
 		
-	}
-	
-	// Main menu method
-	public MainMenu() {
-		currentselection = 0;		// the selected thing
-		
-		x = 0;						// x of selector
-		y = 0;						// y of selector
-		
-		//selector = ;
-		//menuBackground = ;
 	}
 	
 	// Selection
@@ -57,7 +59,7 @@ public class MainMenu extends Menu{
 		switch(currentselection) {
 			// new game
 			case 0:
-				
+				Main.getInstance().menu = new CharacterCreation();
 			// continue game
 			case 1:
 			

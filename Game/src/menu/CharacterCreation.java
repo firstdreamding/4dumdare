@@ -25,7 +25,7 @@ public class CharacterCreation extends Menu {
 	}
 	
 	// Selection
-	public void downPressed() {				// active when you press down key
+	public void rightPressed() {				// active when you press right key
 		if (currentcharacter < 5) {
 			currentcharacter ++;
 		}
@@ -33,7 +33,7 @@ public class CharacterCreation extends Menu {
 			currentcharacter  = 0;
 		}
 	}
-	public void upPressed() {				// active when you press up key
+	public void leftPressed() {					// active when you press left key
 		if (currentcharacter  > 0) {
 			currentcharacter --;
 		}

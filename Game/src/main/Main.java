@@ -15,7 +15,7 @@ public class Main {
 	Screen screen;
 	final int MENU = 0;
 	final int GAME = 1;
-	public int state = GAME;
+	public int state = GAME;	//Change to MENU for testing, but change it back when done
 	private boolean running;
 	private boolean isPause;
 	private int fps = 60;
@@ -25,7 +25,7 @@ public class Main {
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	MainMenu mainmenu = new MainMenu();
 	CharacterCreation charactermenu = new CharacterCreation();
-	Menu menu = charactermenu;
+	public Menu menu = mainmenu;
 	public Level level;
 	static Main instance;
 
@@ -138,7 +138,7 @@ public class Main {
 
 	private void update() {
 		if (state == MENU) {
-
+			menu.update();
 		} else if (state == GAME) {
 			level.update();
 		}
