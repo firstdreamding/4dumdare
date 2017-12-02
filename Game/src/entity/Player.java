@@ -11,26 +11,32 @@ public class Player {
 	final int up = -1;
 	final int down = 1;
 	Texture sprite;
-	int x, y, xvel, yvel, speed, xdir, ydir,w,h;
-	Hitbox hitbox = new Hitbox(x,y,w,h);
-	public Player(int x1, int y1) {
+	int x, y, xvel, yvel, speed, xdir, ydir, w, h;
+	Hitbox hitbox;
+
+	public Player(int x1, int y1, int w1, int h1) {
 		x = x1;
 		y = y1;
+		w = w1;
+		h = h1;
 		xvel = 0;
 		yvel = 0;
 		speed = 5;
-		sprite = new Texture("/sprites/kappa.png", 40, 40);
+		sprite = new Texture("/sprites/kappa.png", w, h);
+		hitbox = new Hitbox(x, y, w, h);
 	}
 
 	public void update() {
 		x += xvel;
 		y += yvel;
+		hitbox.set(x,y,w,h);
 	}
 
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, sprite);
+		screen.drawRect(hitbox.x,hitbox.y,hitbox.width,hitbox.height,0xff0000);
 	}
-
+	
 	public void keyPressed(int code) {
 		switch (code) {
 		case KeyEvent.VK_LEFT:

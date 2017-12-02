@@ -2,23 +2,14 @@ package graphics;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 
 public class Screen {
 
@@ -47,7 +38,7 @@ public class Screen {
 			this.color = color;
 		}
 	}
-	
+
 	private List<RenderableString> stringBuffer = new ArrayList<RenderableString>();
 
 	public Screen(int width, int height, BufferStrategy bs) {
@@ -64,7 +55,7 @@ public class Screen {
 			pixels[i] = 0;
 		}
 	}
-	
+
 	public void clear(int color) {
 		for (int i = 0; i < width * height; i++) {
 			pixels[i] = color;
@@ -184,24 +175,25 @@ public class Screen {
 	}
 
 	public void drawString(String string, Font font, Color color, Rectangle rect) {
-		if(font == null)
+		if (font == null)
 			font = DEFAULT_FONT;
-		if(color == null)
+		if (color == null)
 			color = DEFAULT_COLOR;
 		FontMetrics metrics = g.getFontMetrics(font);
 		int tx = rect.x + (rect.width - metrics.stringWidth(string)) / 2;
 		int ty = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
 		stringBuffer.add(new RenderableString(string, tx, ty, font, color));
 	}
+
 	public void drawString(String string, Font font, Color color, Rectangle rect, int y) {
-		if(font == null)
+		if (font == null)
 			font = DEFAULT_FONT;
-		if(color == null)
+		if (color == null)
 			color = DEFAULT_COLOR;
 		FontMetrics metrics = g.getFontMetrics(font);
 		int tx = rect.x + (rect.width - metrics.stringWidth(string)) / 2;
 		int ty = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
-		stringBuffer.add(new RenderableString(string, tx, ty+y, font, color));
+		stringBuffer.add(new RenderableString(string, tx, ty + y, font, color));
 	}
 
 	public void drawTexture(int x, int y, Texture texture) {
