@@ -8,6 +8,8 @@ import java.awt.event.KeyListener;
 import entity.Player;
 import graphics.Screen;
 import graphics.Window;
+import menu.CharacterCreation;
+import menu.MainMenu;
 import menu.Menu;
 
 public class Main {
@@ -24,7 +26,9 @@ public class Main {
 	private int ups;
 	private int frameCount = 0;
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
-	Menu menu = new Menu();
+	MainMenu mainmenu = new MainMenu();
+	CharacterCreation charactermenu = new CharacterCreation();
+	Menu menu = charactermenu;
 	Player player;
 
 	public static void main(String[] args) {
