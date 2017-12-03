@@ -11,6 +11,7 @@ import entity.GangBoi;
 import entity.Player;
 import entity.ShopPerson;
 import graphics.Screen;
+import inGameGui.IGGangMembersGui;
 import inGameGui.IGGui;
 import inGameGui.IGRaidGui;
 
@@ -36,6 +37,7 @@ public class Level {
 		player = new Player(50, 50, 50, 50);
 		money = 2058;
 		iGMenu = new IGRaidGui(100, 2058);
+		Item item = new Item("Knife");
 	}
 
 	public void update() {
@@ -68,6 +70,12 @@ public class Level {
 		if (inGameMenu) {
 			iGMenu.render(screen);
 		}
+	}
+
+	public void openMember(GangBoi g) {
+		System.out.println("123");
+		inGameMenu = !inGameMenu;
+		setiGMenu(new IGGangMembersGui(g));
 	}
 
 	public IGGui getiGMenu() {

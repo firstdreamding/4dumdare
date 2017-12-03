@@ -8,6 +8,7 @@ import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
 import main.Animation;
+import inGameGui.IGRaidGui;
 import inGameGui.IGShopGui;
 import main.Main;
 
@@ -72,18 +73,17 @@ public class Player {
 			ydir = up;
 			break;
 		case KeyEvent.VK_Z:
-			List<BasePerson> list = Main.getInstance().level.basepeople;
+			List<GangBoi> list = Main.getInstance().level.members;
 			for (int i = 0; i < list.size(); i++) {
-				System.out.println("z");
 				Hitbox l = list.get(i).hitbox;
 				if (hitbox.intersects(l)) {
-					list.get(i).interact();
+					Main.getInstance().level.openMember(list.get(i));
 				}
 			}
 			break;
 		case KeyEvent.VK_R:
 			Main.getInstance().level.inGameMenu = !Main.getInstance().level.inGameMenu;
-			Main.getInstance().level.setiGMenu(new IGShopGui());
+			Main.getInstance().level.setiGMenu(new IGRaidGui(0, 0));
 			break;
 		case KeyEvent.VK_T:
 			Main.getInstance().level.items.add(new Item("knife"));
