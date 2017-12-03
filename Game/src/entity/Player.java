@@ -3,13 +3,12 @@ package entity;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
-import Items.Item;
 import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
-import main.Animation;
 import inGameGui.IGRaidGui;
-import inGameGui.IGShopGui;
+import items.Item;
+import main.Animation;
 import main.Main;
 
 public class Player {

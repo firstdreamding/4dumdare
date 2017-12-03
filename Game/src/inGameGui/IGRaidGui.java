@@ -6,7 +6,6 @@ import java.util.Random;
 
 import graphics.Screen;
 import graphics.Texture;
-import main.Main;
 import main.Raid;
 
 public class IGRaidGui extends IGGui{

@@ -6,8 +6,6 @@ import graphics.Screen;
 import graphics.Texture;
 import main.Main;
 
-import java.lang.Math;
-
 public class GangBoi {
 	final int W = 64;
 	final int H = 64;

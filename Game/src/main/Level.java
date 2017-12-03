@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import Items.Item;
 import entity.BasePerson;
 import entity.GangBoi;
 import entity.Player;
@@ -15,6 +14,7 @@ import graphics.Screen;
 import inGameGui.IGGangMembersGui;
 import inGameGui.IGGui;
 import inGameGui.IGRaidGui;
+import items.Item;
 
 public class Level {
 
@@ -60,6 +60,8 @@ public class Level {
 				dayCounter = 0;
 				day++;
 			}
+			if(dayCounter % 1800 == 0)
+				raidStart();
 			dayCounter++;
 		} else {
 			iGMenu.update();

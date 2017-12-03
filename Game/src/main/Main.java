@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import graphics.Screen;
 import graphics.Window;
 import menu.CharacterCreation;
