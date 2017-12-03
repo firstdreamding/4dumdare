@@ -82,7 +82,7 @@ public class Player {
 			break;
 		case KeyEvent.VK_R:
 			Main.getInstance().level.inGameMenu = !Main.getInstance().level.inGameMenu;
-			Main.getInstance().level.setiGMenu(new IGRaidGui(0, 0));
+			Main.getInstance().level.setiGMenu(new IGRaidGui(1000, 1000));
 			break;
 		case KeyEvent.VK_T:
 			Main.getInstance().level.inventory.add(new Item("knife"));
