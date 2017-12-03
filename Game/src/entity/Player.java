@@ -137,7 +137,7 @@ public class Player {
 			break;
 		case KeyEvent.VK_Y:
 			GangBoi g = new GangBoi();
-			g.giveWeapon(new Item("Knife"));
+			g.giveItem(new Item("Knife"));
 			Main.getInstance().level.members.add(g);
 			Main.getInstance().level.openMember(g);
 		}

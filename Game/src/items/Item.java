@@ -3,21 +3,25 @@ package items;
 import graphics.Texture;
 
 public class Item {
-	final static int WEAPON = 0;
-	final static int COSMETIC = 1;
+	public final static int WEAPON = 0;
+	public final static int COSMETIC = 1;
 
 	static public enum List {
-		KNIFE(1, 1, 0, 1, 3, "Knife", 200, WEAPON), FEDORA(0, 1, 2, 2, 2, "Fedora", 200, COSMETIC);
+		KNIFE("Knife", 1, 1, 0, 1, 3, 200, WEAPON),
+		FEDORA("Fedora", 0, 1, 2, 2, 2, 200, COSMETIC),
+		AWP("AWP", 2, 0, 0, 0, 3, 700, WEAPON);
 		int att, def, loy, luc, acc, price, type;
 		String path;
 
-		List(int att, int def, int loy, int luc, int acc, String name, int price, int type) {
-			att = this.att;
-			def = this.def;
-			loy = this.loy;
-			luc = this.luc;
-			acc = this.acc;
-			price = this.price;
+		List(String name, int att, int def, int loy, int luc, int acc, int price, int type) {
+			this.att = att;
+			this.def = def;
+			this.loy = loy;
+			this.luc = luc;
+			this.acc = acc;
+			this.price = price;
+			this.type = type;
+
 			path = "/sprites/Item" + this.name() + ".png";
 		}
 
@@ -25,7 +29,7 @@ public class Item {
 
 	public Texture bigsprite;
 	public Texture smallsprite;
-	int att, def, loy, luc, acc, price = 0;
+	public int att, def, loy, luc, acc, price, type = 0;
 	public boolean real = true;
 
 	public Item(String s) {
@@ -36,11 +40,13 @@ public class Item {
 		luc = l.luc;
 		acc = l.acc;
 		price = l.price;
-		smallsprite = new Texture(l.path, 50, 50);
+		type = l.type;
+		smallsprite = new Texture(l.path, 60, 60);
 		bigsprite = new Texture(l.path, 100, 100);
 	}
 
-	public Item(boolean r) {
+	public Item(boolean r,int type) {
+		this.type=type;
 		if (!r) {
 			real = false;
 		}

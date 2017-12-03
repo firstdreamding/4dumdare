@@ -38,7 +38,12 @@ public class Level {
 		player = new Player(50, 50, 50, 50);
 		money = 2058;
 		iGMenu = new IGRaidGui(100, 2058);
-		Item item = new Item("Knife");
+		inventory.add(new Item("Fedora"));
+		inventory.add(new Item("AWP"));
+		inventory.add(new Item("Knife"));
+		for (int i = 0; i < 12; i++) {
+			inventory.add(new Item(false, Item.WEAPON));
+		}
 	}
 
 	public void raidStart() {

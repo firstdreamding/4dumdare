@@ -21,8 +21,8 @@ public class GangBoi {
 	long waittarget = 0;
 	boolean moving = false;
 	Hitbox hitbox;
-	public Item weapon = new Item(false);
-	public Item cosmetic = new Item(false);
+	public Item weapon = new Item(false,Item.WEAPON);
+	public Item cosmetic = new Item(false,Item.COSMETIC);
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1, Texture sprite) {
 		att = att1;
@@ -34,15 +34,15 @@ public class GangBoi {
 		totalScore = att + def + luc + loy + acc;
 	}
 
-	public Item giveWeapon(Item w) {
-		Item temp = weapon;
-		weapon = w;
-		return temp;
-	}
-
-	public Item giveCosmetic(Item c) {
-		Item temp = cosmetic;
-		cosmetic = c;
+	public Item giveItem(Item i) {
+		Item temp;
+		if (i.type == Item.WEAPON) {
+			temp = weapon;
+			weapon = i;
+		} else {
+			temp = cosmetic;
+			cosmetic = i;
+		}
 		return temp;
 	}
 
