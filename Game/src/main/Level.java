@@ -20,7 +20,7 @@ public class Level {
 
 	public List<GangBoi> members = new ArrayList<GangBoi>();
 	public List<BasePerson> basepeople = new ArrayList<BasePerson>();
-	public List<Item> items = new ArrayList<Item>();
+	public List<Item> inventory = new ArrayList<Item>();
 	final int LENGTH_OF_DAY = 43200;
 	int day;
 	int dayCounter;
@@ -42,7 +42,7 @@ public class Level {
 	}
 
 	public void raidStart() {
-		double prob = 1 - Math.pow(1.05, -money);
+		double prob = 1-Math.pow(1.05, -(money / 1000));
 		System.out.println("Raid probability: " + prob);
 		Random r = new Random();
 		if (r.nextDouble() < prob) {
@@ -60,7 +60,7 @@ public class Level {
 				dayCounter = 0;
 				day++;
 			}
-			if(dayCounter % 1800 == 0)
+			if (dayCounter % 1800 == 0)
 				raidStart();
 			dayCounter++;
 		} else {
@@ -85,9 +85,9 @@ public class Level {
 	}
 
 	public void openMember(GangBoi g) {
-		System.out.println("123");
-		inGameMenu = !inGameMenu;
 		setiGMenu(new IGGangMembersGui(g));
+		inGameMenu = !inGameMenu;
+		
 	}
 
 	public IGGui getiGMenu() {
