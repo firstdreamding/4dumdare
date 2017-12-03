@@ -60,7 +60,7 @@ public class IGRaidGui extends IGGui{
 	
 	public void render(Screen screen) {
 		screen.drawTexture(65, 30, raidGUI);
-		for(int i = 0; i < 4; i++) {			
+		for(int i = 0; i < 3; i++) {			
 			screen.drawString(name[i], 150 + 250*i, 200, tr2, Color.BLACK); //change 50 and 50 to something
 			screen.drawString(money[i], 140 + 275*i, 255, tr, Color.black);
 			screen.drawString(prob[i], 142 + 275*i, 325, tr, Color.black);
