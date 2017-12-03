@@ -21,8 +21,8 @@ public class GangBoi {
 	long waittarget = 0;
 	boolean moving = false;
 	Hitbox hitbox;
-	Item weapon = null;
-	Item cosmetic = null;
+	public Item weapon = new Item(false);
+	public Item cosmetic = new Item(false);
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1, Texture sprite) {
 		att = att1;
