@@ -44,7 +44,7 @@ public class Player {
 		h = h1;
 		xvel = 0;
 		yvel = 0;
-		speed = 1;
+		speed = 5;
 		sprite = new Texture("/sprites/kappa.png", w, h);
 		hitbox = new Hitbox(x, y, w, h);
 		animation = stand;
@@ -56,6 +56,41 @@ public class Player {
 		hitbox.set(x, y, w, h);
 		sprite = animation.getSprite();
 		animation.update();
+		if (ydir == down && yvel == speed) {
+			if (animation != walkDown) {
+				animation.stop();
+				animation.reset();
+				animation = walkDown;
+				animation.start();
+			}
+		} else if (ydir == up && yvel == -speed) {
+			if (animation != walkUp) {
+				animation.stop();
+				animation.reset();
+				animation = walkUp;
+				animation.start();
+			}
+		} else if (xdir == right && xvel == speed) {
+			if (animation != walkRight) {
+				animation.stop();
+				animation.reset();
+				animation = walkRight;
+				animation.start();
+			}
+		} else if (xdir == left && xvel == -speed) {
+			if (animation != walkLeft) {
+				animation.stop();
+				animation.reset();
+				animation = walkLeft;
+				animation.start();
+			}
+		} else if (yvel == 0 && xvel == 0) {
+			animation.stop();
+			animation.reset();
+			animation = stand;
+			animation.start();
+		}
+
 	}
 
 	public void render(Screen screen) {
@@ -72,14 +107,10 @@ public class Player {
 		case KeyEvent.VK_RIGHT:
 			xvel = speed;
 			xdir = right;
-			animation = walkRight;
-			animation.start();
 			break;
 		case KeyEvent.VK_DOWN:
 			yvel = speed;
 			ydir = down;
-			animation = walkDown;
-			animation.start();
 			break;
 		case KeyEvent.VK_UP:
 			yvel = -speed;
@@ -117,57 +148,21 @@ public class Player {
 		case KeyEvent.VK_LEFT:
 			if (xdir == left) {
 				xvel = 0;
-
-				if (yvel == 0) {
-					animation.stop();
-					animation.reset();
-					animation = stand;
-				} else if(yvel == speed) {
-					animation.stop();
-					animation.reset();
-					animation = walkDown;
-				} else if(yvel == -speed) {
-					animation.stop();
-					animation.reset();
-					animation = walkUp;
-				}
-				
-				
 			}
 			break;
 		case KeyEvent.VK_RIGHT:
 			if (xdir == right) {
 				xvel = 0;
-				
-				if (yvel == 0) {
-					animation.stop();
-					animation.reset();
-					animation = stand;
-				} else if(yvel == speed) {
-					animation.stop();
-					animation.reset();
-					animation = walkDown;
-				} else if(yvel == -speed) {
-					animation.stop();
-					animation.reset();
-					animation = walkUp;
-				}
 			}
 			break;
 		case KeyEvent.VK_DOWN:
 			if (ydir == down) {
 				yvel = 0;
-				animation.stop();
-				animation.reset();
-				animation = stand;
 			}
 			break;
 		case KeyEvent.VK_UP:
 			if (ydir == up) {
 				yvel = 0;
-				animation.stop();
-				animation.reset();
-				animation = stand;
 			}
 			break;
 		}
