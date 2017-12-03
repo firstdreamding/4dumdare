@@ -69,6 +69,7 @@ public class GangBoi {
 				moving = false;
 				waittarget = 60 * random(3, 8);
 			}
+			hitbox.set(x, y, W, H);
 		} else {
 			waittick++;
 			if (waittick > waittarget) {

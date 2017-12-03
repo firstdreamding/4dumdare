@@ -1,6 +1,7 @@
 package inGameGui;
 
 import entity.GangBoi;
+import graphics.Screen;
 
 public class IGGangMembersGui extends IGGui {
 	GangBoi g;
@@ -9,6 +10,10 @@ public class IGGangMembersGui extends IGGui {
 		this.g = g;
 	}
 	public void update() {
-		System.out.println("JHI");
+		
+	}
+	public void render(Screen screen) {
+		
+		screen.drawRect(0, 0, 100, 100, 0x0000ff);
 	}
 }

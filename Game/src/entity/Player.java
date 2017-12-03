@@ -75,11 +75,9 @@ public class Player {
 		case KeyEvent.VK_Z:
 			List<GangBoi> list = Main.getInstance().level.members;
 			for (int i = 0; i < list.size(); i++) {
-				System.out.println("z");
 				Hitbox l = list.get(i).hitbox;
 				if (hitbox.intersects(l)) {
-					System.out.println("int");
-					//Main.getInstance().level.openMember(list.get(i));
+					Main.getInstance().level.openMember(list.get(i));
 				}
 			}
 			break;
