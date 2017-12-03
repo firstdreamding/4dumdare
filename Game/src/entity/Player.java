@@ -4,7 +4,9 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 import graphics.Screen;
+import graphics.SpriteSheet;
 import graphics.Texture;
+import main.Animation;
 import main.Main;
 
 public class Player {
@@ -15,6 +17,16 @@ public class Player {
 	Texture sprite;
 	int x, y, xvel, yvel, speed, xdir, ydir, w, h;
 	Hitbox hitbox;
+	SpriteSheet test = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
+	Texture tests[] = {
+			test.getTexture(0, 0),
+			test.getTexture(1, 0),
+			test.getTexture(2, 0),
+			test.getTexture(3, 0),
+			test.getTexture(4, 0),
+			
+	};
+	public Animation testing;
 
 	public Player(int x1, int y1, int w1, int h1) {
 		x = x1;
@@ -26,12 +38,16 @@ public class Player {
 		speed = 5;
 		sprite = new Texture("/sprites/kappa.png", w, h);
 		hitbox = new Hitbox(x, y, w, h);
+		testing = new Animation(tests, 12);
+		testing.start();
 	}
 
 	public void update() {
 		x += xvel;
 		y += yvel;
 		hitbox.set(x, y, w, h);
+		sprite = testing.getSprite();
+		testing.update();
 	}
 
 	public void render(Screen screen) {
