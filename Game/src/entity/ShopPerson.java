@@ -5,7 +5,4 @@ public class ShopPerson extends BasePerson {
 		super(x1, y1, w1, h1);
 	}
 
-	public void interact() {
-		System.out.println("SHOP");
-	}
 }

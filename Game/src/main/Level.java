@@ -2,23 +2,23 @@ package main;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import Items.Item;
 import entity.BasePerson;
 import entity.GangBoi;
 import entity.Player;
+import entity.ShopPerson;
 import graphics.Screen;
 import inGameGui.IGGui;
 import inGameGui.IGRaidGui;
-import inGameGui.StartingGui;
 
 public class Level {
 
 	public List<GangBoi> entities = new ArrayList<GangBoi>();
 	public List<BasePerson> basepeople = new ArrayList<BasePerson>();
+	public List<Item> items = new ArrayList<Item>();
 	final int LENGTH_OF_DAY = 43200;
 	int day;
 	int dayCounter;
@@ -26,12 +26,12 @@ public class Level {
 	Player player;
 	public boolean inGameMenu;
 	private IGGui iGMenu;
-	
+
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 
 	public Level() {
 		day = 1;
-		basepeople.add(new BasePerson(400, 100, 70, 70));
+		basepeople.add(new ShopPerson(400, 100, 70, 70));
 		// Variable Initiation
 		player = new Player(50, 50, 50, 50);
 		money = 2058;
@@ -63,9 +63,9 @@ public class Level {
 		}
 		screen.drawString("Day " + day, 160, 80, tr, Color.black);
 		player.render(screen);
-		
-		//ingame menu shit
-		if(inGameMenu) {
+
+		// ingame menu shit
+		if (inGameMenu) {
 			iGMenu.render(screen);
 		}
 	}

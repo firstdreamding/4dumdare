@@ -7,7 +7,6 @@ public class Hitbox extends Rectangle {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int x, y, width, height = 0;
 
 	public Hitbox(int x1, int y1, int w1, int h1) {
 		x = x1;
@@ -15,7 +14,7 @@ public class Hitbox extends Rectangle {
 		width = w1;
 		height = h1;
 	}
-	
+
 	public void set(int x1, int y1, int w1, int h1) {
 		x = x1;
 		y = y1;

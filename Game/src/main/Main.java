@@ -17,7 +17,7 @@ public class Main {
 	Screen screen;
 	final int MENU = 0;
 	final int GAME = 1;
-	public int state = GAME;	//Change to MENU for testing, but change it back when done
+	public int state = GAME; // Change to MENU for testing, but change it back when done
 	private boolean running;
 	private boolean isPause;
 	private int fps = 60;
@@ -30,7 +30,6 @@ public class Main {
 	public Menu menu = mainmenu;
 	public Level level;
 	static Main instance;
-
 
 	public static Main getInstance() {
 		return instance;
@@ -53,12 +52,12 @@ public class Main {
 		screen = window.getScreen();
 		window.show();
 		level = new Level();
-		
+
 		// KEYLISTEN
 		Main.getInstance().window.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(state == GAME)
+				if (state == GAME)
 					level.player.keyPressed(e.getKeyCode());
 				else
 					menu.keyPressed(e.getKeyCode());
@@ -66,16 +65,15 @@ public class Main {
 			}
 
 			@Override
-			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
+			public void keyTyped(KeyEvent e) {
 
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if(state == GAME)
+				if (state == GAME) {
 					level.player.keyReleased(e.getKeyCode());
-
+				}
 			}
 
 		});
@@ -150,7 +148,7 @@ public class Main {
 			}
 		}
 	}
-	
+
 	public void stop() {
 		running = false;
 	}
