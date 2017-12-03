@@ -19,6 +19,8 @@ public class GangBoi {
 	private Texture sprite;
 	int destx, desty = -1;
 	long waittick = 0;
+	long waittarget = 0;
+	boolean moving = false;
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1, Texture sprite) {
 		att = att1;
@@ -44,31 +46,42 @@ public class GangBoi {
 	}
 
 	public void update() {
-		if (destx > 0 && desty > 0) {
-
+		if (moving) {
+			boolean a1 = false, a2 = false;
+			if (x < destx) {
+				x++;
+			} else if (x > destx) {
+				x--;
+			} else {
+				a1 = true;
+			}
+			if (y < desty) {
+				y++;
+			} else if (y > desty) {
+				y--;
+			} else {
+				a2 = true;
+			}
+			if (a1 && a2) {
+				moving = false;
+				waittarget = 60 * random(3, 8);
+			}
 		} else {
 			waittick++;
-			if (waittick > 60) {
-				waittick = 0;
+			if (waittick > waittarget) {
 				int angle = random(0, 359);
-				int radius = random(0, 100);
-				int xmov = (int) (radius * Math.cos(Math.toRadians(angle)));
-				int ymov = (int) (radius * Math.sin(Math.toRadians(angle)));
+				int radius = random(100, 200);
+				int destx = x + (int) (radius * Math.cos(Math.toRadians(angle)));
+				int desty = y + (int) (radius * Math.sin(Math.toRadians(angle)));
 				int scrW = Main.getInstance().W;
 				int scrH = Main.getInstance().H;
-				if (x + xmov + W > scrW) {
-					xmov = scrW - W - 1 - x;
+				if (destx + W > scrW || destx < 0 || desty + H > scrH || desty < 0) {
+				} else {
+					this.destx = destx;
+					this.desty = desty;
+					moving = true;
+					waittick = 0;
 				}
-				if (x + xmov < 0) {
-					xmov = 1 - x;
-				}
-				if (y + ymov + H > scrH) {
-					ymov = scrH - H - 1 - y;
-				}
-				if (y + ymov < 0) {
-					ymov = 1 - y;
-				}
-				// System.out.println(xmov+","+ymov);
 			}
 		}
 	}
