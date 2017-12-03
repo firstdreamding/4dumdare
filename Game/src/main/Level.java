@@ -2,18 +2,16 @@ package main;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import entity.BasePerson;
 import entity.GangBoi;
 import entity.Player;
+import entity.ShopPerson;
 import graphics.Screen;
 import inGameGui.IGGui;
 import inGameGui.IGRaidGui;
-import inGameGui.StartingGui;
 
 public class Level {
 
@@ -31,7 +29,7 @@ public class Level {
 
 	public Level() {
 		day = 1;
-		basepeople.add(new BasePerson(400, 100, 70, 70));
+		basepeople.add(new ShopPerson(400, 100, 70, 70));
 		// Variable Initiation
 		player = new Player(50, 50, 50, 50);
 		money = 2058;

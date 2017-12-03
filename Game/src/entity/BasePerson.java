@@ -1,17 +1,18 @@
 package entity;
 
 import graphics.Screen;
+import graphics.Texture;
 
 public class BasePerson {
 	Hitbox hitbox;
 	int x, y, w, h;
-
+	Texture sprite;
 	public BasePerson(int x1, int y1, int w1, int h1) {
 		x = x1;
 		y = y1;
 		w = w1;
 		h = h1;
-		hitbox = new Hitbox(x1, y1, w1, h1);
+		hitbox = new Hitbox(x, y, w, h);
 	}
 
 	public void render(Screen screen) {
@@ -19,6 +20,5 @@ public class BasePerson {
 	}
 
 	public void interact() {
-		System.out.println("ez");
 	}
 }

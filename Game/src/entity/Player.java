@@ -60,13 +60,13 @@ public class Player {
 		case KeyEvent.VK_Z:
 			List<BasePerson> list = Main.getInstance().level.basepeople;
 			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).hitbox.intersects(hitbox)) {
+				System.out.println("z");
+				Hitbox l = list.get(i).hitbox;
+				if (hitbox.intersects(l)) {
 					list.get(i).interact();
 				}
 			}
 			break;
-		case KeyEvent.VK_R:
-			Main.getInstance().level.inGameMenu = !Main.getInstance().level.inGameMenu;
 		}
 	}
 
