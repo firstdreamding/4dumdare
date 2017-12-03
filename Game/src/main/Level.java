@@ -16,7 +16,7 @@ import inGameGui.IGRaidGui;
 
 public class Level {
 
-	public List<GangBoi> entities = new ArrayList<GangBoi>();
+	public List<GangBoi> members = new ArrayList<GangBoi>();
 	public List<BasePerson> basepeople = new ArrayList<BasePerson>();
 	public List<Item> items = new ArrayList<Item>();
 	final int LENGTH_OF_DAY = 43200;
@@ -41,8 +41,8 @@ public class Level {
 	public void update() {
 		if (!inGameMenu) {
 			player.update();
-			for (int i = 0; i < entities.size(); i++) {
-				entities.get(i).update();
+			for (int i = 0; i < members.size(); i++) {
+				members.get(i).update();
 			}
 			if (dayCounter == LENGTH_OF_DAY) {
 				dayCounter = 0;
@@ -55,8 +55,8 @@ public class Level {
 	}
 
 	public void render(Screen screen) {
-		for (int i = 0; i < entities.size(); i++) {
-			entities.get(i).render(screen);
+		for (int i = 0; i < members.size(); i++) {
+			members.get(i).render(screen);
 		}
 		for (int i = 0; i < basepeople.size(); i++) {
 			basepeople.get(i).render(screen);
