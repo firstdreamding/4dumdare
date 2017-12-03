@@ -62,7 +62,11 @@ public class Main {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				super.mouseClicked(e);
-				System.out.println(e.getX()+","+e.getY());
+				if (level.inGameMenu) {
+					level.getiGMenu().click(e.getPoint());
+				}
+				System.out.println(e.getX() + "," + e.getY());
+
 			}
 		});
 		window.addKeyListener(new KeyListener() {
@@ -136,7 +140,6 @@ public class Main {
 				// Update the frames we got.
 				int thisSecond = (int) (lastUpdateTime / 1000000000);
 				if (thisSecond > lastSecondTime) {
-					System.out.println("NEW SECOND " + thisSecond + " " + frameCount);
 					fps = frameCount;
 					ups = overUpdateCounter;
 					overUpdateCounter = 0;

@@ -42,7 +42,7 @@ public class Level {
 	}
 
 	public void raidStart() {
-		double prob = 1-Math.pow(1.05, -(money / 1000));
+		double prob = 1 - Math.pow(1.05, -(money / 1000));
 		System.out.println("Raid probability: " + prob);
 		Random r = new Random();
 		if (r.nextDouble() < prob) {
@@ -87,7 +87,7 @@ public class Level {
 	public void openMember(GangBoi g) {
 		setiGMenu(new IGGangMembersGui(g));
 		inGameMenu = !inGameMenu;
-		
+
 	}
 
 	public IGGui getiGMenu() {

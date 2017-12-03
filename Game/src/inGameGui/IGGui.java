@@ -10,7 +10,7 @@ public class IGGui {
 	public static final int SHOPGUI = 1;
 	public static final int RAIDCHOOSEGUI = 2;
 	public static final int RAIDGUI = 3;
-	int type =-1;
+	int type = -1;
 
 	public void render(Screen screen) {
 
@@ -21,7 +21,6 @@ public class IGGui {
 	}
 
 	public void click(Point point) {
-
 	}
 
 }
