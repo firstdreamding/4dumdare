@@ -101,12 +101,13 @@ public class MainMenu extends Menu {
 	
 	// Selection
 	public void downPressed() {				// active when you press down key
-		if (currentselection < 5) {
+		if (currentselection < 4) {
 			currentselection++;
 			Selector();
 		}
 		else {
 			currentselection = 0;
+			Selector();
 		}
 	}
 	public void upPressed() {				// active when you press up key
@@ -116,6 +117,7 @@ public class MainMenu extends Menu {
 		}
 		else {
 			currentselection = 4;
+			Selector();
 		}
 	}
 	

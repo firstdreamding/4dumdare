@@ -4,10 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import graphics.Screen;
 import graphics.Window;
-import inGameGui.IGGui;
 import menu.CharacterCreation;
 import menu.MainMenu;
 import menu.Menu;
