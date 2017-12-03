@@ -8,6 +8,7 @@ import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
 import main.Animation;
+import inGameGui.IGRaidGui;
 import inGameGui.IGShopGui;
 import main.Main;
 
@@ -83,7 +84,7 @@ public class Player {
 			break;
 		case KeyEvent.VK_R:
 			Main.getInstance().level.inGameMenu = !Main.getInstance().level.inGameMenu;
-			Main.getInstance().level.setiGMenu(new IGShopGui());
+			Main.getInstance().level.setiGMenu(new IGRaidGui(0, 0));
 			break;
 		case KeyEvent.VK_T:
 			Main.getInstance().level.items.add(new Item("knife"));
