@@ -4,6 +4,7 @@ import java.util.Random;
 
 import graphics.Screen;
 import graphics.Texture;
+import items.Item;
 import main.Main;
 
 public class GangBoi {
@@ -14,12 +15,14 @@ public class GangBoi {
 	int x = 200, y = 200;
 	String name;
 	private int totalScore = 0;
-	private Texture sprite;
+	public Texture sprite;
 	int destx, desty = -1;
 	long waittick = 0;
 	long waittarget = 0;
 	boolean moving = false;
 	Hitbox hitbox;
+	Item weapon = null;
+	Item cosmetic = null;
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1, Texture sprite) {
 		att = att1;
@@ -29,6 +32,18 @@ public class GangBoi {
 		acc = acc1;
 		this.sprite = sprite;
 		totalScore = att + def + luc + loy + acc;
+	}
+
+	public Item giveWeapon(Item w) {
+		Item temp = weapon;
+		weapon = w;
+		return temp;
+	}
+
+	public Item giveCosmetic(Item c) {
+		Item temp = cosmetic;
+		cosmetic = c;
+		return temp;
 	}
 
 	public GangBoi() {

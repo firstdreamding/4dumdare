@@ -85,9 +85,14 @@ public class Player {
 			Main.getInstance().level.setiGMenu(new IGRaidGui(0, 0));
 			break;
 		case KeyEvent.VK_T:
-			Main.getInstance().level.items.add(new Item("knife"));
+			Main.getInstance().level.inventory.add(new Item("knife"));
 			Main.getInstance().level.members.add(new GangBoi());
 			break;
+		case KeyEvent.VK_Y:
+			GangBoi g = new GangBoi();
+			g.giveWeapon(new Item("Knife"));
+			Main.getInstance().level.members.add(g);
+			Main.getInstance().level.openMember(g);
 		}
 	}
 

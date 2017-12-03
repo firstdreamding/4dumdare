@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import graphics.Screen;
 import graphics.Window;
@@ -55,7 +58,14 @@ public class Main {
 		level = new Level();
 
 		// KEYLISTEN
-		Main.getInstance().window.addKeyListener(new KeyListener() {
+		window.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				super.mouseClicked(e);
+				System.out.println(e.getX()+","+e.getY());
+			}
+		});
+		window.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (state == GAME)

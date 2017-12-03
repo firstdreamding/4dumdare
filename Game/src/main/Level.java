@@ -20,7 +20,7 @@ public class Level {
 
 	public List<GangBoi> members = new ArrayList<GangBoi>();
 	public List<BasePerson> basepeople = new ArrayList<BasePerson>();
-	public List<Item> items = new ArrayList<Item>();
+	public List<Item> inventory = new ArrayList<Item>();
 	final int LENGTH_OF_DAY = 43200;
 	int day;
 	int dayCounter;
@@ -85,9 +85,9 @@ public class Level {
 	}
 
 	public void openMember(GangBoi g) {
-		System.out.println("123");
-		inGameMenu = !inGameMenu;
 		setiGMenu(new IGGangMembersGui(g));
+		inGameMenu = !inGameMenu;
+		
 	}
 
 	public IGGui getiGMenu() {
