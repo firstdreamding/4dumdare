@@ -42,7 +42,7 @@ public class Level {
 	}
 
 	public void raidStart() {
-		double prob = 1 - Math.pow(1.05, -money);
+		double prob = 1-Math.pow(1.05, -(money / 1000));
 		System.out.println("Raid probability: " + prob);
 		Random r = new Random();
 		if (r.nextDouble() < prob) {
@@ -60,7 +60,7 @@ public class Level {
 				dayCounter = 0;
 				day++;
 			}
-			if(dayCounter % 1800 == 0)
+			if (dayCounter % 1800 == 0)
 				raidStart();
 			dayCounter++;
 		} else {
