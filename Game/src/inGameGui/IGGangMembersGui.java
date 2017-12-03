@@ -1,5 +1,7 @@
 package inGameGui;
 
+import java.awt.Rectangle;
+
 import entity.GangBoi;
 import graphics.Screen;
 import graphics.Texture;
@@ -8,7 +10,8 @@ import main.Main;
 public class IGGangMembersGui extends IGGui {
 	GangBoi g;
 	Texture layover;
-
+	Rectangle weaponbox = new Rectangle(100, 315, 100, 100);
+	Rectangle cosmeticbox = new Rectangle(225, 315, 100, 100);
 	final int W = Main.getInstance().W;
 	final int H = Main.getInstance().H;
 
