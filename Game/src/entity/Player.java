@@ -19,12 +19,23 @@ public class Player {
 	Texture sprite;
 	int x, y, xvel, yvel, speed, xdir, ydir, w, h;
 	Hitbox hitbox;
-	SpriteSheet test = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
-	Texture tests[] = { test.getTexture(0, 0), test.getTexture(1, 0), test.getTexture(2, 0), test.getTexture(3, 0),
-			test.getTexture(4, 0),
+	SpriteSheet player = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
+	Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
+			player.getTexture(4, 0) };
+	Texture walkingUp[] = { player.getTexture(1, 1), player.getTexture(2, 1), player.getTexture(3, 1),
+			player.getTexture(4, 1) };
+	Texture walkingRight[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
+			player.getTexture(4, 2) };
+	Texture walkingLeft[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
+			player.getTexture(4, 2) };
+	Texture standing[] = { player.getTexture(0, 0) };
 
-	};
-	public Animation testing;
+	private Animation animation;
+	private Animation walkDown = new Animation(walkingDown, 10);
+	private Animation walkUp = new Animation(walkingUp, 10);
+	private Animation walkRight = new Animation(walkingRight, 10);
+	private Animation walkLeft = new Animation(walkingLeft, 10);
+	private Animation stand = new Animation(standing, 10);
 
 	public Player(int x1, int y1, int w1, int h1) {
 		x = x1;
@@ -33,19 +44,18 @@ public class Player {
 		h = h1;
 		xvel = 0;
 		yvel = 0;
-		speed = 5;
+		speed = 1;
 		sprite = new Texture("/sprites/kappa.png", w, h);
 		hitbox = new Hitbox(x, y, w, h);
-		testing = new Animation(tests, 12);
-		testing.start();
+		animation = stand;
 	}
 
 	public void update() {
 		x += xvel;
 		y += yvel;
 		hitbox.set(x, y, w, h);
-		sprite = testing.getSprite();
-		testing.update();
+		sprite = animation.getSprite();
+		animation.update();
 	}
 
 	public void render(Screen screen) {
@@ -62,14 +72,20 @@ public class Player {
 		case KeyEvent.VK_RIGHT:
 			xvel = speed;
 			xdir = right;
+			animation = walkRight;
+			animation.start();
 			break;
 		case KeyEvent.VK_DOWN:
 			yvel = speed;
 			ydir = down;
+			animation = walkDown;
+			animation.start();
 			break;
 		case KeyEvent.VK_UP:
 			yvel = -speed;
 			ydir = up;
+			animation = walkUp;
+			animation.start();
 			break;
 		case KeyEvent.VK_Z:
 			List<GangBoi> list = Main.getInstance().level.members;
@@ -101,21 +117,57 @@ public class Player {
 		case KeyEvent.VK_LEFT:
 			if (xdir == left) {
 				xvel = 0;
+
+				if (yvel == 0) {
+					animation.stop();
+					animation.reset();
+					animation = stand;
+				} else if(yvel == speed) {
+					animation.stop();
+					animation.reset();
+					animation = walkDown;
+				} else if(yvel == -speed) {
+					animation.stop();
+					animation.reset();
+					animation = walkUp;
+				}
+				
+				
 			}
 			break;
 		case KeyEvent.VK_RIGHT:
 			if (xdir == right) {
 				xvel = 0;
+				
+				if (yvel == 0) {
+					animation.stop();
+					animation.reset();
+					animation = stand;
+				} else if(yvel == speed) {
+					animation.stop();
+					animation.reset();
+					animation = walkDown;
+				} else if(yvel == -speed) {
+					animation.stop();
+					animation.reset();
+					animation = walkUp;
+				}
 			}
 			break;
 		case KeyEvent.VK_DOWN:
 			if (ydir == down) {
 				yvel = 0;
+				animation.stop();
+				animation.reset();
+				animation = stand;
 			}
 			break;
 		case KeyEvent.VK_UP:
 			if (ydir == up) {
 				yvel = 0;
+				animation.stop();
+				animation.reset();
+				animation = stand;
 			}
 			break;
 		}
