@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import Items.Item;
 import entity.BasePerson;
@@ -38,6 +39,15 @@ public class Level {
 		money = 2058;
 		iGMenu = new IGRaidGui(100, 2058);
 		Item item = new Item("Knife");
+	}
+
+	public void raidStart() {
+		double prob = 1 - Math.pow(1.05, -money);
+		System.out.println("Raid probability: " + prob);
+		Random r = new Random();
+		if (r.nextDouble() < prob) {
+			System.out.println("Ur getting raided");
+		}
 	}
 
 	public void update() {
