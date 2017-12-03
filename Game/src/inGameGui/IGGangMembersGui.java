@@ -1,12 +1,14 @@
 package inGameGui;
 
-public class IGGangMembersGui extends IGGui{
-	//Gang Members with stats
-	int score;
-	
-	public IGGangMembersGui(int score) {
-		this.score = score;
+import entity.GangBoi;
+
+public class IGGangMembersGui extends IGGui {
+	GangBoi g;
+
+	public IGGangMembersGui(GangBoi g) {
+		this.g = g;
 	}
-	
-	
+	public void update() {
+		System.out.println("JHI");
+	}
 }

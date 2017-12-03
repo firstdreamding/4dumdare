@@ -12,7 +12,7 @@ public class GangBoi {
 	final int W = 64;
 	final int H = 64;
 	final int MAX = 2;
-	int att, def, luc, loy, acc;
+	int att = 0, def = 0, luc = 0, loy = 0, acc = 0;
 	int x = 200, y = 200;
 	String name;
 	private int totalScore = 0;
@@ -21,6 +21,7 @@ public class GangBoi {
 	long waittick = 0;
 	long waittarget = 0;
 	boolean moving = false;
+	Hitbox hitbox;
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1, Texture sprite) {
 		att = att1;
@@ -34,6 +35,7 @@ public class GangBoi {
 
 	public GangBoi() {
 		sprite = new Texture("/sprites/GB" + String.valueOf(random(1, MAX)) + ".png", W, H);
+		hitbox = new Hitbox(x, y, W, H);
 	}
 
 	public int random(int min, int max) {
@@ -43,6 +45,7 @@ public class GangBoi {
 
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, sprite);
+		screen.drawRect(x, y, W, H, 0x00ff00);
 	}
 
 	public void update() {
