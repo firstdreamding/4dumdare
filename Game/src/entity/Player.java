@@ -20,13 +20,9 @@ public class Player {
 	int x, y, xvel, yvel, speed, xdir, ydir, w, h;
 	Hitbox hitbox;
 	SpriteSheet test = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
-	Texture tests[] = {
-			test.getTexture(0, 0),
-			test.getTexture(1, 0),
-			test.getTexture(2, 0),
-			test.getTexture(3, 0),
+	Texture tests[] = { test.getTexture(0, 0), test.getTexture(1, 0), test.getTexture(2, 0), test.getTexture(3, 0),
 			test.getTexture(4, 0),
-			
+
 	};
 	public Animation testing;
 
@@ -91,6 +87,7 @@ public class Player {
 			break;
 		case KeyEvent.VK_T:
 			Main.getInstance().level.items.add(new Item("knife"));
+			Main.getInstance().level.members.add(new GangBoi());
 			break;
 		}
 	}

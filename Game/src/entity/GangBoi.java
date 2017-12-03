@@ -4,13 +4,16 @@ import java.util.Random;
 
 import graphics.Screen;
 import graphics.Texture;
+import main.Main;
+
+import java.lang.Math;
 
 public class GangBoi {
 	final int W = 64;
 	final int H = 64;
 	final int MAX = 2;
 	int att, def, luc, loy, acc;
-	int x, y = 0;
+	int x = 200, y = 200;
 	String name;
 	private int totalScore = 0;
 	private Texture sprite;
@@ -42,12 +45,30 @@ public class GangBoi {
 
 	public void update() {
 		if (destx > 0 && desty > 0) {
-			
+
 		} else {
 			waittick++;
-			if(waittick>60) {
-				waittick=0;
-				System.out.println(Math.sin(30));
+			if (waittick > 60) {
+				waittick = 0;
+				int angle = random(0, 359);
+				int radius = random(0, 100);
+				int xmov = (int) (radius * Math.cos(Math.toRadians(angle)));
+				int ymov = (int) (radius * Math.sin(Math.toRadians(angle)));
+				int scrW = Main.getInstance().W;
+				int scrH = Main.getInstance().H;
+				if (x + xmov + W > scrW) {
+					xmov = scrW - W - 1 - x;
+				}
+				if (x + xmov < 0) {
+					xmov = 1 - x;
+				}
+				if (y + ymov + H > scrH) {
+					ymov = scrH - H - 1 - y;
+				}
+				if (y + ymov < 0) {
+					ymov = 1 - y;
+				}
+				// System.out.println(xmov+","+ymov);
 			}
 		}
 	}

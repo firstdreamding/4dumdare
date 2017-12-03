@@ -11,6 +11,8 @@ import menu.MainMenu;
 import menu.Menu;
 
 public class Main {
+	public final int W = 960;
+	public final int H = 540;
 	Window window;
 	Screen screen;
 	final int MENU = 0;
@@ -46,7 +48,7 @@ public class Main {
 	private void init() {
 		running = true;
 		isPause = false;
-		window = new Window("Connect Subjects", 960, 540);
+		window = new Window("Connect Subjects", W, H);
 		screen = window.getScreen();
 		window.show();
 		level = new Level();
