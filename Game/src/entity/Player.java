@@ -3,8 +3,10 @@ package entity;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+import Items.Item;
 import graphics.Screen;
 import graphics.Texture;
+import inGameGui.IGShopGui;
 import main.Main;
 
 public class Player {
@@ -66,6 +68,13 @@ public class Player {
 					list.get(i).interact();
 				}
 			}
+			break;
+		case KeyEvent.VK_R:
+			Main.getInstance().level.inGameMenu = !Main.getInstance().level.inGameMenu;
+			Main.getInstance().level.setiGMenu(new IGShopGui());
+			break;
+		case KeyEvent.VK_T:
+			Main.getInstance().level.items.add(new Item("knife"));
 			break;
 		}
 	}
