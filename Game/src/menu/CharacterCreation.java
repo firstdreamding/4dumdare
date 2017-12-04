@@ -1,6 +1,7 @@
 package menu;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import graphics.Screen;
 import graphics.SpriteSheet;
@@ -11,6 +12,7 @@ public class CharacterCreation extends Menu {
 	// create ints, textures, and stuff here
 	
 	Texture creationBackground;
+	ArrayList<Texture> characterHighlight = new ArrayList<Texture>();
 	
 	// sprites
 	SpriteSheet character1 = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
@@ -23,67 +25,40 @@ public class CharacterCreation extends Menu {
 	Texture character3Texture;
 	Texture character4Texture;
 	
-	Texture selector;
-	
 	int currentcharacter;
-	
-	int x;
-	int y;
-	
-	int x0;
-	int y0;
-	int x1;
-	int y1;
-	int x2;
-	int y2;
-	int x3;
-	int y3;
-	int x4;
-	int y4;
-	
+
 	public CharacterCreation() {
 		currentcharacter = 0;	
+				
+		// menu textures
+		creationBackground = new Texture("/sprites/CharacterSelect1.png", 960, 540);
 		
-		// starting position for selector
-		x0 = 96;					// x of selector
-		y0 = 238;					// y of selector
+		characterHighlight.add(new Texture("1", "/sprites/CharacterSelect1.png", 960, 540));
+		characterHighlight.add(new Texture("2", "/sprites/CharacterSelect2.png", 960, 540));
+		characterHighlight.add(new Texture("3", "/sprites/CharacterSelect3.png", 960, 540));
+		characterHighlight.add(new Texture("4", "/sprites/CharacterSelect4.png", 960, 540));
 		
-		// more positions
-		x1 = 288;
-		y1 = 238;
-		
-		x2 = 480;
-		y2 = 238;
-		
-		x3 = 672;
-		y3 = 238;
-		
-		// setting start position of selector
-		x = x0;
-		y = y0;
-		
-		// textures
-		//creationBackground = new Texture ("/sprites/", 960, 540) ;
-		
+		// character textures
 		character1Texture = character1.getTexture(0, 0);
 		character2Texture = character2.getTexture(0, 0);
 		character3Texture = character3.getTexture(0, 0);
 		character4Texture = character4.getTexture(0, 0);
 		
-		selector = new Texture("/sprites/Selector.png", 64, 64);
+		//selector = new Texture("/sprites/Selector.png", 64, 64);
 	}
 	
 	// render
 	public void render(Screen screen) {
 		screen.drawRect(0, 0, 1000, 1000, 0x0000FF);
-		//screen.drawTexture(0, 0, creationBackground);
+		screen.drawTexture(0, 0, creationBackground);
 		
-		screen.drawTexture(160, 238, character1Texture);
-		screen.drawTexture(352, 238, character2Texture);
-		screen.drawTexture(544, 238, character3Texture);
-		screen.drawTexture(736, 238, character4Texture);
+		// y coords: 238 (exact center), 160 (under light)
+		screen.drawTexture(160, 160, character1Texture);
+		screen.drawTexture(352, 160, character2Texture);
+		screen.drawTexture(544, 160, character3Texture);
+		screen.drawTexture(736, 160, character4Texture);
 		
-		screen.drawTexture(x, y, selector);
+		//screen.drawTexture(x, y, selector);
 	}
 	public void update() {
 		
@@ -94,27 +69,23 @@ public class CharacterCreation extends Menu {
 		switch(currentcharacter) {
 			case 0:
 				// new position of selector
-				x = x0;
-				y = y0;
+				creationBackground = characterHighlight.get(currentcharacter);
 				break;
 			case 1:
-				x = x1;
-				y = y1;
+				creationBackground = characterHighlight.get(currentcharacter);
 				break;
 			case 2:
-				x = x2;
-				y = y2;
+				creationBackground = characterHighlight.get(currentcharacter);
 				break;
 			case 3:
-				x = x3;
-				y = y3;
+				creationBackground = characterHighlight.get(currentcharacter);
 				break;
 		}
 	}
 	
 	// Selection
 	public void rightPressed() {				// active when you press right key
-		if (currentcharacter < 5) {
+		if (currentcharacter < 3) {
 			currentcharacter ++;
 			Selector();
 		}
@@ -129,7 +100,7 @@ public class CharacterCreation extends Menu {
 			Selector();
 		}
 		else {
-			currentcharacter  = 4;
+			currentcharacter  = 3;
 			Selector();
 		}
 	}
