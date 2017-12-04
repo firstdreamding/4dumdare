@@ -1,5 +1,8 @@
 package menu;
 
+import java.awt.Color;
+import java.awt.Font;
+
 import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
@@ -7,6 +10,8 @@ import main.Animation;
 import main.Main;
 
 public class IntroCutscene extends Menu {
+	Font f = new Font("Rockwell", Font.PLAIN, 30);
+	
 	final int left = -1;
 	final int right = 1;
 	final int up = -1;
@@ -15,7 +20,10 @@ public class IntroCutscene extends Menu {
 	int x, y;
 	
 	int movement;
+	int time;
+	int texttime;
 	
+	boolean cuetext;
 	boolean done;
 	
 	Texture background;
@@ -45,7 +53,10 @@ public class IntroCutscene extends Menu {
 		y = 160;
 		
 		movement = 0;
+		time = 0;
+		texttime = 0;
 		
+		cuetext = false;
 		done = false;
 		
 		background = new Texture("/sprites/CharacterBG.png", 960, 540);
@@ -59,6 +70,20 @@ public class IntroCutscene extends Menu {
 		screen.drawTexture(0, 0, background);
 		
 		screen.drawTexture(x, y, animation.getSprite());
+		if (cuetext == true) {
+			screen.fillRectBlend(0, 0, 960, 540, 0x0000FF);
+			if (texttime < 100) {
+				screen.drawString("In this world...", 300, 160, f, Color.white);
+				texttime++;
+			} else if (texttime > 100 && texttime < 200) {
+				System.out.println("AY YO MA");
+				screen.drawString("In this world...", 300, 160, f, Color.white);
+				screen.drawString("It's kill or be killed.", 300, 238, f, Color.white);
+				texttime++;
+			} else if (texttime > 200) {
+				done = true;
+			}
+		}
 	}
 	
 	public void update() {
@@ -66,11 +91,19 @@ public class IntroCutscene extends Menu {
 		if (done == true) {
 			Main.getInstance().menu = new MainMenu();
 		} else {
-			if (animation == walkRight && movement < 1000) {
+			if (animation == walkRight && movement < 500) {
 				animation.start();
 				movement++;
+				x = x + 2;
 			} else {
-				done = true;
+				cuetext = true;
+				time = 0;
+				
+				if (time < 500) {
+					time++;
+				} else {
+					done = true;
+				}
 			}
 		}
 	}
