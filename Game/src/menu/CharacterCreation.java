@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
+import main.Main;
 
 public class CharacterCreation extends Menu {
 	// create ints, textures, and stuff here
@@ -138,23 +139,26 @@ public class CharacterCreation extends Menu {
 		switch(currentcharacter) {
 			// character 1
 			case 0:
-				nameGang();
+				Main.getInstance().level.player.playerChange( new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64));
+				Main.getInstance().state = 1;
 				break;
 			// character 2
 			case 1:
-				nameGang();
+				Main.getInstance().level.player.playerChange( new SpriteSheet(new Texture("/sprites/player2.png", 320, 192), 64, 64));
+				Main.getInstance().state = 1;
 				break;
 			// character 3
 			case 2:
-				nameGang();
+				Main.getInstance().level.player.playerChange( new SpriteSheet(new Texture("/sprites/player3.png", 320, 192), 64, 64));
+				Main.getInstance().state = 1;
 				break;
 			// character 4
 			case 3:
-				nameGang();
+				Main.getInstance().level.player.playerChange( new SpriteSheet(new Texture("/sprites/player4.png", 320, 192), 64, 64));
+				Main.getInstance().state = 1;
 				break;
 			// character 5
 			case 4:
-				nameGang();
 				break;
 		}
 	}

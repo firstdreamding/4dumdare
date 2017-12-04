@@ -18,6 +18,7 @@ public class Player {
 	final int down = 1;
 	Texture sprite;
 	int x, y, xvel, yvel, speed, xdir, ydir, w, h;
+	
 	Hitbox hitbox;
 	SpriteSheet player = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
 	Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
@@ -48,6 +49,26 @@ public class Player {
 		sprite = new Texture("/sprites/kappa.png", w, h);
 		hitbox = new Hitbox(x, y, w, h);
 		animation = stand;
+		System.out.println("test");
+	}
+	
+	public void playerChange(SpriteSheet change) {
+		player = change;
+		Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
+				player.getTexture(4, 0) };
+		Texture walkingUp[] = { player.getTexture(1, 1), player.getTexture(2, 1), player.getTexture(3, 1),
+				player.getTexture(4, 1) };
+		Texture walkingRight[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
+				player.getTexture(4, 2) };
+		Texture walkingLeft[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
+				player.getTexture(4, 2) };
+		Texture standing[] = { player.getTexture(0, 0) };
+		
+		walkDown = new Animation(walkingDown, 10);
+		walkUp = new Animation(walkingUp, 10);
+		walkRight = new Animation(walkingRight, 10);
+		walkLeft = new Animation(walkingLeft, 10);
+		stand = new Animation(standing, 10);
 	}
 
 	public void update() {

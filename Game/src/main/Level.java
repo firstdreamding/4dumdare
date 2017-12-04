@@ -25,7 +25,7 @@ public class Level {
 	int day;
 	int dayCounter;
 	public int money;
-	Player player;
+	public Player player;
 	public boolean inGameMenu;
 	private IGGui iGMenu;
 
