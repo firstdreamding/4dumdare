@@ -46,6 +46,23 @@ public class Level {
 		}
 	}
 
+	public int nextOpenSpace() {
+		List<Item> inv = inventory;
+		for (int i = 0; i < 15; i++) {
+			if (!inv.get(i).real) {
+				return i;
+			}
+		}
+		return 14;
+	}
+
+	public void buy(Item.List l) {
+		if (money > l.price) {
+			money -= l.price;
+			inventory.set(nextOpenSpace(), new Item(l.name()));
+		}
+	}
+
 	public void raidStart() {
 		double prob = 1 - Math.pow(1.05, -(money / 1000));
 		System.out.println("Raid probability: " + prob);

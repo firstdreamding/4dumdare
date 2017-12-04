@@ -10,8 +10,9 @@ public class Item {
 		KNIFE("Knife", 1, 1, 0, 1, 3, 200, WEAPON),
 		FEDORA("Fedora", 0, 1, 2, 2, 2, 200, COSMETIC),
 		AWP("AWP", 2, 0, 0, 0, 3, 700, WEAPON);
-		int att, def, loy, luc, acc, price, type;
-		String path;
+		public int att, def, loy, luc, acc, price, type;
+		public String path;
+		public Texture t;
 
 		List(String name, int att, int def, int loy, int luc, int acc, int price, int type) {
 			this.att = att;
@@ -23,6 +24,7 @@ public class Item {
 			this.type = type;
 
 			path = "/sprites/Item" + this.name() + ".png";
+			t = new Texture(path, 50, 50);
 		}
 
 	}
@@ -45,8 +47,8 @@ public class Item {
 		bigsprite = new Texture(l.path, 100, 100);
 	}
 
-	public Item(boolean r,int type) {
-		this.type=type;
+	public Item(boolean r, int type) {
+		this.type = type;
 		if (!r) {
 			real = false;
 		}

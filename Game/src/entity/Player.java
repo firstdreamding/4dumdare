@@ -7,6 +7,7 @@ import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
 import inGameGui.IGRaidGui;
+import inGameGui.IGShopGui;
 import items.Item;
 import main.Animation;
 import main.Main;
@@ -18,7 +19,7 @@ public class Player {
 	final int down = 1;
 	Texture sprite;
 	int x, y, xvel, yvel, speed, xdir, ydir, w, h;
-	
+
 	Hitbox hitbox;
 	SpriteSheet player = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
 	Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
@@ -51,7 +52,7 @@ public class Player {
 		animation = stand;
 		System.out.println("test");
 	}
-	
+
 	public void playerChange(SpriteSheet change) {
 		player = change;
 		Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
@@ -63,7 +64,7 @@ public class Player {
 		Texture walkingLeft[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
 				player.getTexture(4, 2) };
 		Texture standing[] = { player.getTexture(0, 0) };
-		
+
 		walkDown = new Animation(walkingDown, 10);
 		walkUp = new Animation(walkingUp, 10);
 		walkRight = new Animation(walkingRight, 10);
@@ -161,6 +162,9 @@ public class Player {
 			g.giveItem(new Item("Knife"));
 			Main.getInstance().level.members.add(g);
 			Main.getInstance().level.openMember(g);
+		case KeyEvent.VK_S:
+			Main.getInstance().level.inGameMenu = !Main.getInstance().level.inGameMenu;
+			Main.getInstance().level.setiGMenu(new IGShopGui());
 		}
 	}
 

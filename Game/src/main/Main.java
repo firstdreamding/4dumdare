@@ -21,7 +21,7 @@ public class Main {
 	Screen screen;
 	final int MENU = 0;
 	final int GAME = 1;
-	public int state = MENU; // Change to MENU for testing, but change it back when done
+	public int state = GAME; // Change to MENU for testing, but change it back when done
 	private boolean running;
 	private boolean isPause;
 	private int fps = 60;
@@ -34,7 +34,7 @@ public class Main {
 	public Menu menu = mainmenu;
 	public Level level;
 	static Main instance;
-
+	
 	public static Main getInstance() {
 		return instance;
 	}
