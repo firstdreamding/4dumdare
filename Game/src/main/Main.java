@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import graphics.Screen;
 import graphics.Window;
 import menu.CharacterCreation;
+import menu.IntroCutscene;
 import menu.MainMenu;
 import menu.Menu;
 
@@ -31,7 +32,8 @@ public class Main {
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	MainMenu mainmenu = new MainMenu();
 	CharacterCreation charactermenu = new CharacterCreation();
-	public Menu menu = mainmenu;
+	IntroCutscene introcutscene = new IntroCutscene();
+	public Menu menu = introcutscene;
 	public Level level;
 	static Main instance;
 	

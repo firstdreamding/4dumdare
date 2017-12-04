@@ -13,18 +13,20 @@ public class Saves extends Menu {
 	
 	int currentsave;
 	
-	// render
-	public void render(Screen screen) {
-		screen.drawRect(0, 0, 1000, 1000, 0x0000FF);
-	}
-	public void update() {
-		
-	}
-	
 	public Saves() {
 		currentsave = 0;	
 		
-		//savesBackground = ;
+		savesBackground = new Texture("/sprites/SavesBG.png", 960, 540);
+	}
+	
+	// render
+	public void render(Screen screen) {
+		//screen.drawRect(0, 0, 1000, 1000, 0x0000FF);
+		
+		screen.drawTexture(0, 0, savesBackground);
+	}
+	public void update() {
+		
 	}
 	
 	// Selection

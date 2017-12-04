@@ -15,6 +15,7 @@ public class MainMenu extends Menu {
 	Texture selector;
 	
 	Texture controls;
+	Texture credits;
 	
 	int x, y;
 	
@@ -27,12 +28,14 @@ public class MainMenu extends Menu {
 	int currentselection;
 	
 	boolean displayControls;
+	boolean displayCredits;
 	
 	// constructor
 	public MainMenu() {
 		currentselection = 0;		// the selected thing
 		
 		displayControls = false;
+		displayCredits = false;
 		
 		// starting position for selector
 		x0 = 690;					// x of selector
@@ -62,6 +65,7 @@ public class MainMenu extends Menu {
 		selector = new Texture("/sprites/Selector.png", 64, 64);
 		
 		controls = new Texture("/sprites/Controls.png", 960, 540);
+		credits = new Texture("/sprites/Credits.png", 960, 540);
 	}
 	
 	// render
@@ -75,6 +79,9 @@ public class MainMenu extends Menu {
 		
 		if (displayControls == true) {
 			screen.drawTexture(0, 0, controls);
+		}
+		if (displayCredits == true) {
+			screen.drawTexture(0, 0, credits);
 		}
 	}
 	public void update() {
@@ -144,6 +151,7 @@ public class MainMenu extends Menu {
 				break;
 			// credits
 			case 3:
+				displayCredits = true;
 				break;
 			// exit game
 			case 4:
@@ -154,6 +162,8 @@ public class MainMenu extends Menu {
 	public void escape() {
 		if (displayControls == true) {
 			displayControls = false;
+		} else if (displayCredits == true) {
+			displayCredits = false;
 		} else if (currentselection == 4) {
 			Main.getInstance().stop();
 		} else {
