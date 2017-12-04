@@ -93,5 +93,9 @@ public class IGRaidGui extends IGGui {
 	public void click() {
 
 	}
+	
+	public void keyPressed(int code) {
+
+	}
 
 }
