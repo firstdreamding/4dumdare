@@ -10,6 +10,9 @@ import main.Main;
 public class GangBoi {
 	final int W = 64;
 	final int H = 64;
+	final int AIM_W = 192;
+	final int AIM_H = 192;
+	
 	final int MAX = 2;
 	int att = 0, def = 0, luc = 0, loy = 0, acc = 0;
 	int x = 200, y = 200;
@@ -17,10 +20,11 @@ public class GangBoi {
 	private int totalScore = 0;
 	public Texture sprite;
 	int destx, desty = -1;
+	boolean team;
 	long waittick = 0;
 	long waittarget = 0;
 	boolean moving = false;
-	Hitbox hitbox;
+	Hitbox hitbox, aimBox;
 	public Item weapon = new Item(false, Item.WEAPON);
 	public Item cosmetic = new Item(false, Item.COSMETIC);
 
@@ -49,6 +53,7 @@ public class GangBoi {
 	public GangBoi() {
 		sprite = new Texture("/sprites/GB" + String.valueOf(random(1, MAX)) + ".png", W, H);
 		hitbox = new Hitbox(x, y, W, H);
+		aimBox = new Hitbox(x-W, y-H, AIM_W, AIM_H);
 	}
 
 	public int random(int min, int max) {
@@ -59,6 +64,7 @@ public class GangBoi {
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, sprite);
 		screen.drawRect(x, y, W, H, 0x00ff00);
+		screen.drawRect(aimBox.x, aimBox.y, aimBox.width, aimBox.height, 0xff00ff);
 	}
 
 	public void update() {
@@ -83,6 +89,7 @@ public class GangBoi {
 				waittarget = 60 * random(3, 8);
 			}
 			hitbox.set(x, y, W, H);
+			aimBox.set(x-W, y-H, AIM_W, AIM_H);
 		} else {
 			waittick++;
 			if (waittick > waittarget) {
@@ -109,6 +116,10 @@ public class GangBoi {
 
 	public void setTotalScore(int totalScore) {
 		this.totalScore = totalScore;
+	}
+	
+	public void combat(GangBoi otherGuy) {
+		
 	}
 
 	public String getName() {
