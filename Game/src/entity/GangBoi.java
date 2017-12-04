@@ -5,6 +5,7 @@ import java.util.Random;
 import graphics.Screen;
 import graphics.Texture;
 import items.Item;
+import main.Animation;
 import main.Main;
 
 public class GangBoi {
@@ -29,6 +30,27 @@ public class GangBoi {
 	public Item weapon = new Item(false, Item.WEAPON);
 	public Item cosmetic = new Item(false, Item.COSMETIC);
 	int combatTick;
+	Texture player;
+	/*
+	
+	Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
+			player.getTexture(4, 0) };
+	Texture walkingUp[] = { player.getTexture(1, 1), player.getTexture(2, 1), player.getTexture(3, 1),
+			player.getTexture(4, 1) };
+	Texture walkingRight[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
+			player.getTexture(4, 2) };
+	Texture walkingLeft[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
+			player.getTexture(4, 2) };
+	Texture standing[] = { player.getTexture(0, 0) };
+	
+
+	private Animation animation;
+	private Animation walkDown = new Animation(walkingDown, 10);
+	private Animation walkUp = new Animation(walkingUp, 10);
+	private Animation walkRight = new Animation(walkingRight, 10);
+	private Animation walkLeft = new Animation(walkingLeft, 10);
+	private Animation stand = new Animation(standing, 10);
+	*/
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1, Texture sprite) {
 		att = att1;
