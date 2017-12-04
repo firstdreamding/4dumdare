@@ -11,6 +11,7 @@ import entity.GangBoi;
 import entity.Player;
 import entity.ShopPerson;
 import graphics.Screen;
+import graphics.Texture;
 import inGameGui.IGGangMembersGui;
 import inGameGui.IGGui;
 import inGameGui.IGRaidGui;
@@ -28,6 +29,7 @@ public class Level {
 	public Player player;
 	public boolean inGameMenu;
 	private IGGui iGMenu;
+	Texture bg;
 
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 
@@ -44,6 +46,9 @@ public class Level {
 		for (int i = 0; i < 12; i++) {
 			inventory.add(new Item(false, Item.WEAPON));
 		}
+		
+		bg = new Texture("/sprites/Warehouse.png",960, 540);
+		
 	}
 
 	public int nextOpenSpace() {
@@ -91,6 +96,9 @@ public class Level {
 	}
 
 	public void render(Screen screen) {
+		
+		screen.drawTexture(0, 0, bg);
+		
 		for (int i = 0; i < members.size(); i++) {
 			members.get(i).render(screen);
 		}

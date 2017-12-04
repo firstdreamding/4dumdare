@@ -24,9 +24,11 @@ public class GangBoi {
 	long waittick = 0;
 	long waittarget = 0;
 	boolean moving = false;
+	boolean stopMoving;
 	Hitbox hitbox, aimBox;
 	public Item weapon = new Item(false, Item.WEAPON);
 	public Item cosmetic = new Item(false, Item.COSMETIC);
+	int combatTick;
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1, Texture sprite) {
 		att = att1;
@@ -68,7 +70,13 @@ public class GangBoi {
 	}
 
 	public void update() {
-		if (moving) {
+		if(stopMoving) {
+			combatTick++;
+			if(combatTick%60 == 0) {
+				
+			}
+		}
+		else if (moving) {
 			boolean a1 = false, a2 = false;
 			if (x < destx) {
 				x++;
@@ -119,7 +127,11 @@ public class GangBoi {
 	}
 	
 	public void combat(GangBoi otherGuy) {
-		
+		if(otherGuy.hitbox.intersects(aimBox)) {
+			stopMoving = true;
+		} else {
+			
+		}
 	}
 
 	public String getName() {
