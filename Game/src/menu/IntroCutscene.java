@@ -27,6 +27,7 @@ public class IntroCutscene extends Menu {
 	boolean done;
 	
 	Texture background;
+	Texture presents;
 	
 	Texture playerTexture;
 
@@ -60,6 +61,7 @@ public class IntroCutscene extends Menu {
 		done = false;
 		
 		background = new Texture("/sprites/CharacterBG.png", 960, 540);
+		presents = new Texture("/sprites/Presents.png", 960, 540);
 		playerTexture = player.getTexture(0, 0);
 		
 		animation = walkRight;
@@ -72,15 +74,17 @@ public class IntroCutscene extends Menu {
 		screen.drawTexture(x, y, animation.getSprite());
 		if (cuetext == true) {
 			screen.fillRectBlend(0, 0, 960, 540, 0x0000FF);
-			if (texttime < 100) {
+			if (texttime <= 100) {
 				screen.drawString("In this world...", 300, 160, f, Color.white);
 				texttime++;
-			} else if (texttime > 100 && texttime < 200) {
-				System.out.println("AY YO MA");
+			} else if (texttime > 100 && texttime <= 200) {
 				screen.drawString("In this world...", 300, 160, f, Color.white);
 				screen.drawString("It's kill or be killed.", 300, 238, f, Color.white);
 				texttime++;
-			} else if (texttime > 200) {
+			} else if (texttime > 200 && texttime <= 350) {
+				screen.drawTexture(0, 0, presents);
+				texttime++;
+			} else {
 				done = true;
 			}
 		}
