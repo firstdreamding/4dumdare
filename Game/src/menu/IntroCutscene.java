@@ -58,10 +58,11 @@ public class IntroCutscene extends Menu {
 	public void render(Screen screen) {
 		screen.drawTexture(0, 0, background);
 		
-		screen.drawTexture(x, y, playerTexture);
+		screen.drawTexture(x, y, animation.getSprite());
 	}
 	
 	public void update() {
+		animation.update();
 		if (done == true) {
 			Main.getInstance().menu = new MainMenu();
 		} else {
