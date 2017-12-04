@@ -21,7 +21,7 @@ public class Player {
 	int x, y, xvel, yvel, speed, xdir, ydir, w, h;
 
 	Hitbox hitbox;
-	SpriteSheet player = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
+	SpriteSheet player = new SpriteSheet(new Texture("/sprites/player1.png", 320, 192), 64, 64);
 	Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
 			player.getTexture(4, 0) };
 	Texture walkingUp[] = { player.getTexture(1, 1), player.getTexture(2, 1), player.getTexture(3, 1),

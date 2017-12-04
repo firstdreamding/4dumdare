@@ -34,10 +34,8 @@ public class Animation {
 		}
 
 		if (frames.size() == 0) {
-			System.out.println("see");
 			return;
 		}
-		System.out.println("see");
 		stopped = false;
 	}
 

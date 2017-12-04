@@ -16,7 +16,7 @@ public class CharacterCreation extends Menu {
 	ArrayList<Texture> characterHighlight = new ArrayList<Texture>();
 	
 	// characters
-	SpriteSheet character1 = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
+	SpriteSheet character1 = new SpriteSheet(new Texture("/sprites/player1.png", 320, 192), 64, 64);
 	SpriteSheet character2 = new SpriteSheet(new Texture("/sprites/player2.png", 320, 192), 64, 64);
 	SpriteSheet character3 = new SpriteSheet(new Texture("/sprites/player3.png", 320, 192), 64, 64);
 	SpriteSheet character4 = new SpriteSheet(new Texture("/sprites/player4.png", 320, 192), 64, 64);
@@ -111,7 +111,7 @@ public class CharacterCreation extends Menu {
 		switch(currentcharacter) {
 			// character 1
 			case 0:
-				Main.getInstance().level.player.playerChange( new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64));
+				Main.getInstance().level.player.playerChange( new SpriteSheet(new Texture("/sprites/player1.png", 320, 192), 64, 64));
 				Main.getInstance().state = 1;
 				break;
 			// character 2

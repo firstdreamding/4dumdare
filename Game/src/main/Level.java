@@ -96,7 +96,6 @@ public class Level {
 	}
 
 	public void render(Screen screen) {
-		
 		screen.drawTexture(0, 0, bg);
 		
 		for (int i = 0; i < members.size(); i++) {
