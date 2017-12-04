@@ -40,25 +40,22 @@ public class CharacterCreation extends Menu {
 	int x4;
 	int y4;
 	
-	public void CharacterCreator() {
+	public CharacterCreation() {
 		currentcharacter = 0;	
 		
 		// starting position for selector
-		x0 = 64;					// x of selector
+		x0 = 96;					// x of selector
 		y0 = 238;					// y of selector
 		
 		// more positions
-		x1 = 0;
+		x1 = 288;
 		y1 = 238;
 		
-		x2 = 0;
+		x2 = 480;
 		y2 = 238;
 		
-		x3 = 0;
+		x3 = 672;
 		y3 = 238;
-		
-		x4 = 0;
-		y4 = 238;
 		
 		// setting start position of selector
 		x = x0;
@@ -80,10 +77,10 @@ public class CharacterCreation extends Menu {
 		screen.drawRect(0, 0, 1000, 1000, 0x0000FF);
 		//screen.drawTexture(0, 0, creationBackground);
 		
-		screen.drawTexture(128, 238, character1Texture);
-		screen.drawTexture(320, 238, character2Texture);
-		screen.drawTexture(448, 238, character3Texture);
-		screen.drawTexture(640, 238, character4Texture);
+		screen.drawTexture(160, 238, character1Texture);
+		screen.drawTexture(352, 238, character2Texture);
+		screen.drawTexture(544, 238, character3Texture);
+		screen.drawTexture(736, 238, character4Texture);
 		
 		screen.drawTexture(x, y, selector);
 	}
@@ -110,10 +107,6 @@ public class CharacterCreation extends Menu {
 			case 3:
 				x = x3;
 				y = y3;
-				break;
-			case 4:
-				x = x4;
-				y = y4;
 				break;
 		}
 	}
