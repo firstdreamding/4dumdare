@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import graphics.Screen;
 import graphics.Window;
 import menu.CharacterCreation;
+import menu.IntroCutscene;
 import menu.MainMenu;
 import menu.Menu;
 
@@ -21,7 +22,7 @@ public class Main {
 	Screen screen;
 	final int MENU = 0;
 	final int GAME = 1;
-	public int state = GAME; // Change to MENU for testing, but change it back when done
+	public int state = MENU; // Change to MENU for testing, but change it back when done
 	private boolean running;
 	private boolean isPause;
 	private int fps = 60;
@@ -31,7 +32,8 @@ public class Main {
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 	MainMenu mainmenu = new MainMenu();
 	CharacterCreation charactermenu = new CharacterCreation();
-	public Menu menu = mainmenu;
+	IntroCutscene introcutscene = new IntroCutscene();
+	public Menu menu = introcutscene;
 	public Level level;
 	static Main instance;
 	
