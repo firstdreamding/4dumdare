@@ -9,64 +9,73 @@ import main.Main;
 public class MainMenu extends Menu {
 	// create ints, textures, and stuff here
 	
+	Texture menuBackground;
 	Texture menuOptions;
 	Texture gameTitle;
 	Texture selector;
 	
-	int x;
-	int y;
+	Texture controls;
 	
-	int x0;
-	int y0;
-	int x1;
-	int y1;
-	int x2;
-	int y2;
-	int x3;
-	int y3;
-	int x4;
-	int y4;
+	int x, y;
+	
+	int x0, y0;
+	int x1, y1;
+	int x2, y2;
+	int x3, y3;
+	int x4, y4;
 	
 	int currentselection;
 	
+	boolean displayControls;
+	
 	// constructor
-		public MainMenu() {
-			currentselection = 0;		// the selected thing
-			
-			// starting position for selector
-			x0 = 690;					// x of selector
-			y0 = 275;					// y of selector
-			
-			// more positions
-			x1 = 700;
-			y1 = 320;
-			
-			x2 = 715;
-			y2 = 370;
-			
-			x3 = 720;
-			y3 = 415;
-			
-			x4 = 780;
-			y4 = 460;
-			
-			// setting start position of selector
-			x = x0;
-			y = y0;
-			
-			// textures
-			menuOptions = new Texture("/sprites/MainMenu.png", 960, 540);
-			gameTitle = new Texture("/sprites/Name.png", 960, 540);
-			selector = new Texture("/sprites/Selector.png", 64, 64);
-		}
+	public MainMenu() {
+		currentselection = 0;		// the selected thing
+		
+		displayControls = false;
+		
+		// starting position for selector
+		x0 = 690;					// x of selector
+		y0 = 275;					// y of selector
+		
+		// more positions
+		x1 = 700;
+		y1 = 320;
+		
+		x2 = 690;
+		y2 = 370;
+		
+		x3 = 720;
+		y3 = 415;
+		
+		x4 = 780;
+		y4 = 460;
+		
+		// setting start position of selector
+		x = x0;
+		y = y0;
+		
+		// textures
+		//menuBackground = new Texture("/sprites/.png", 960, 540);
+		menuOptions = new Texture("/sprites/MainMenu.png", 960, 540);
+		gameTitle = new Texture("/sprites/Name.png", 960, 540);
+		selector = new Texture("/sprites/Selector.png", 64, 64);
+		
+		controls = new Texture("/sprites/Controls.png", 960, 540);
+	}
 	
 	// render
 	public void render(Screen screen) {
 		screen.fillRect(0, 0, 960, 540, 0x000000);
+		//screen.drawTexture(0, 0, menuBackground);
 		screen.drawTexture(0, 0, menuOptions);
 		screen.drawTexture(0, 0, gameTitle);
 		
 		screen.drawTexture(x, y, selector);
+		
+		if (displayControls == true) {
+			screen.drawTexture(0, 0, controls);
+		}
 	}
 	public void update() {
 		
@@ -104,8 +113,7 @@ public class MainMenu extends Menu {
 		if (currentselection < 4) {
 			currentselection++;
 			Selector();
-		}
-		else {
+		} else {
 			currentselection = 0;
 			Selector();
 		}
@@ -114,13 +122,11 @@ public class MainMenu extends Menu {
 		if (currentselection > 0) {
 			currentselection--;
 			Selector();
-		}
-		else {
+		} else {
 			currentselection = 4;
 			Selector();
 		}
 	}
-	
 	// When you press enter on selected thing
 	public void enter() {
 		switch(currentselection) {
@@ -134,6 +140,7 @@ public class MainMenu extends Menu {
 				break;
 			// options/help
 			case 2:
+				displayControls = true;
 				break;
 			// credits
 			case 3:
@@ -142,6 +149,16 @@ public class MainMenu extends Menu {
 			case 4:
 				Main.getInstance().stop();
 				break;
+		}
+	}
+	public void escape() {
+		if (displayControls == true) {
+			displayControls = false;
+		} else if (currentselection == 4) {
+			Main.getInstance().stop();
+		} else {
+			currentselection = 4;
+			Selector();
 		}
 	}
 	
@@ -158,6 +175,8 @@ public class MainMenu extends Menu {
 			case KeyEvent.VK_ENTER:
 				enter();
 				break;
+			case KeyEvent.VK_ESCAPE:
+				escape();
 		}
 	}
 	

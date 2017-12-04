@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 
 import graphics.Screen;
 import graphics.Texture;
+import main.Main;
 
 public class Saves extends Menu {
 	// create ints, textures, and stuff here
@@ -28,7 +29,7 @@ public class Saves extends Menu {
 	
 	// Selection
 	public void rightPressed() {				// active when you press right key
-		if (currentsave < 3) {
+		if (currentsave < 2) {
 			currentsave ++;
 		}
 		else {
@@ -43,7 +44,6 @@ public class Saves extends Menu {
 			currentsave  = 2;
 		}
 	}
-	
 	//When you press enter on selected thing
 	public void enter() {
 		switch(currentsave) {
@@ -58,6 +58,9 @@ public class Saves extends Menu {
 				break;
 		}
 	}
+	public void escape() {
+		Main.getInstance().menu = new MainMenu();
+	}
 	
 	// key listener
 	public void keyPressed(int code) {
@@ -71,6 +74,9 @@ public class Saves extends Menu {
 				
 			case KeyEvent.VK_ENTER:
 				enter();
+				break;
+			case KeyEvent.VK_ESCAPE:
+				escape();
 				break;
 		}
 	}

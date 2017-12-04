@@ -11,10 +11,11 @@ import main.Main;
 public class CharacterCreation extends Menu {
 	// create ints, textures, and stuff here
 	
+	// background
 	Texture creationBackground;
 	ArrayList<Texture> characterHighlight = new ArrayList<Texture>();
 	
-	// sprites
+	// characters
 	SpriteSheet character1 = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
 	SpriteSheet character2 = new SpriteSheet(new Texture("/sprites/player2.png", 320, 192), 64, 64);
 	SpriteSheet character3 = new SpriteSheet(new Texture("/sprites/player3.png", 320, 192), 64, 64);
@@ -49,7 +50,7 @@ public class CharacterCreation extends Menu {
 	
 	// render
 	public void render(Screen screen) {
-		screen.drawRect(0, 0, 1000, 1000, 0x0000FF);
+		//screen.drawRect(0, 0, 1000, 1000, 0x0000FF);
 		screen.drawTexture(0, 0, creationBackground);
 		
 		// y coords: 238 (exact center), 160 (under light)
@@ -133,9 +134,8 @@ public class CharacterCreation extends Menu {
 				break;
 		}
 	}
-	
-	public void nameGang() {
-		
+	public void escape() {
+		Main.getInstance().menu = new MainMenu();
 	}
 	
 	// key listener
@@ -150,6 +150,9 @@ public class CharacterCreation extends Menu {
 				
 			case KeyEvent.VK_ENTER:
 				enter();
+				break;
+			case KeyEvent.VK_ESCAPE:
+				escape();
 				break;
 		}
 	}
