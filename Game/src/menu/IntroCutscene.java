@@ -1,8 +1,10 @@
 package menu;
 
+import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
 import main.Animation;
+import main.Main;
 
 public class IntroCutscene extends Menu {
 	final int left = -1;
@@ -10,11 +12,17 @@ public class IntroCutscene extends Menu {
 	final int up = -1;
 	final int down = 1;
 	
-	int stepsRight = 0;
+	int x, y;
 	
-	Texture sprite;
+	int movement;
+	
+	boolean done;
+	
+	Texture background;
+	
+	Texture playerTexture;
 
-	SpriteSheet player = new SpriteSheet(new Texture("/sprites/player4.png", 320, 192), 64, 64);
+	SpriteSheet player = new SpriteSheet(new Texture("/sprites/player.png", 320, 192), 64, 64);
 	Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
 			player.getTexture(4, 0) };
 	Texture walkingUp[] = { player.getTexture(1, 1), player.getTexture(2, 1), player.getTexture(3, 1),
@@ -33,20 +41,36 @@ public class IntroCutscene extends Menu {
 	private Animation stand = new Animation(standing, 10);
 	
 	public IntroCutscene() {
-		stepsRight = 0;
+		x = 0;
+		y = 160;
 		
-		sprite = new Texture("/sprites/player4.png", 64, 64);
-		animation = stand;
-		System.out.println("cutscene running...");
+		movement = 0;
+		
+		done = false;
+		
+		background = new Texture("/sprites/CharacterBG.png", 960, 540);
+		playerTexture = player.getTexture(0, 0);
+		
+		animation = walkRight;
+		System.out.println("cutscene started...");
 	}
 	
-	public void cutsene() {
-		sprite = animation.getSprite();
-		animation = walkRight;
-		if (stepsRight < 10) {
-			stepsRight++;
+	public void render(Screen screen) {
+		screen.drawTexture(0, 0, background);
+		
+		screen.drawTexture(x, y, playerTexture);
+	}
+	
+	public void update() {
+		if (done == true) {
+			Main.getInstance().menu = new MainMenu();
 		} else {
-			
+			if (animation == walkRight && movement < 1000) {
+				animation.start();
+				movement++;
+			} else {
+				done = true;
+			}
 		}
 	}
 }
