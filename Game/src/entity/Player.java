@@ -116,7 +116,7 @@ public class Player {
 	}
 
 	public void render(Screen screen) {
-		screen.drawTexture(x, y, sprite);
+		screen.drawTexture(x, y, sprite, animation == walkLeft);
 		screen.drawRect(hitbox.x, hitbox.y, hitbox.width, hitbox.height, 0xff0000);
 	}
 

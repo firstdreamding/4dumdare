@@ -5,11 +5,15 @@ import java.util.Random;
 import graphics.Screen;
 import graphics.Texture;
 import items.Item;
+import main.Animation;
 import main.Main;
 
 public class GangBoi {
 	final int W = 64;
 	final int H = 64;
+	final int AIM_W = 192;
+	final int AIM_H = 192;
+	
 	final int MAX = 2;
 	int att = 0, def = 0, luc = 0, loy = 0, acc = 0;
 	int x = 200, y = 200;
@@ -17,12 +21,36 @@ public class GangBoi {
 	private int totalScore = 0;
 	public Texture sprite;
 	int destx, desty = -1;
+	boolean team;
 	long waittick = 0;
 	long waittarget = 0;
 	boolean moving = false;
-	Hitbox hitbox;
+	boolean stopMoving;
+	Hitbox hitbox, aimBox;
 	public Item weapon = new Item(false, Item.WEAPON);
 	public Item cosmetic = new Item(false, Item.COSMETIC);
+	int combatTick;
+	Texture player;
+	/*
+	
+	Texture walkingDown[] = { player.getTexture(1, 0), player.getTexture(2, 0), player.getTexture(3, 0),
+			player.getTexture(4, 0) };
+	Texture walkingUp[] = { player.getTexture(1, 1), player.getTexture(2, 1), player.getTexture(3, 1),
+			player.getTexture(4, 1) };
+	Texture walkingRight[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
+			player.getTexture(4, 2) };
+	Texture walkingLeft[] = { player.getTexture(1, 2), player.getTexture(2, 2), player.getTexture(3, 2),
+			player.getTexture(4, 2) };
+	Texture standing[] = { player.getTexture(0, 0) };
+	
+
+	private Animation animation;
+	private Animation walkDown = new Animation(walkingDown, 10);
+	private Animation walkUp = new Animation(walkingUp, 10);
+	private Animation walkRight = new Animation(walkingRight, 10);
+	private Animation walkLeft = new Animation(walkingLeft, 10);
+	private Animation stand = new Animation(standing, 10);
+	*/
 
 	public GangBoi(int att1, int def1, int luc1, int loy1, int acc1, Texture sprite) {
 		att = att1;
@@ -49,6 +77,7 @@ public class GangBoi {
 	public GangBoi() {
 		sprite = new Texture("/sprites/GB" + String.valueOf(random(1, MAX)) + ".png", W, H);
 		hitbox = new Hitbox(x, y, W, H);
+		aimBox = new Hitbox(x-W, y-H, AIM_W, AIM_H);
 	}
 
 	public int random(int min, int max) {
@@ -59,10 +88,17 @@ public class GangBoi {
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, sprite);
 		screen.drawRect(x, y, W, H, 0x00ff00);
+		screen.drawRect(aimBox.x, aimBox.y, aimBox.width, aimBox.height, 0xff00ff);
 	}
 
 	public void update() {
-		if (moving) {
+		if(stopMoving) {
+			combatTick++;
+			if(combatTick%60 == 0) {
+				
+			}
+		}
+		else if (moving) {
 			boolean a1 = false, a2 = false;
 			if (x < destx) {
 				x++;
@@ -83,6 +119,7 @@ public class GangBoi {
 				waittarget = 60 * random(3, 8);
 			}
 			hitbox.set(x, y, W, H);
+			aimBox.set(x-W, y-H, AIM_W, AIM_H);
 		} else {
 			waittick++;
 			if (waittick > waittarget) {
@@ -109,6 +146,14 @@ public class GangBoi {
 
 	public void setTotalScore(int totalScore) {
 		this.totalScore = totalScore;
+	}
+	
+	public void combat(GangBoi otherGuy) {
+		if(otherGuy.hitbox.intersects(aimBox)) {
+			stopMoving = true;
+		} else {
+			
+		}
 	}
 
 	public String getName() {
