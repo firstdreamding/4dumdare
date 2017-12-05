@@ -59,7 +59,7 @@ public class MainMenu extends Menu {
 		y = y0;
 		
 		// textures
-		//menuBackground = new Texture("/sprites/.png", 960, 540);
+		menuBackground = new Texture("/sprites/citydong.jpg", 960, 540);
 		menuOptions = new Texture("/sprites/MainMenu.png", 960, 540);
 		gameTitle = new Texture("/sprites/Name.png", 960, 540);
 		selector = new Texture("/sprites/Selector.png", 64, 64);
@@ -70,8 +70,9 @@ public class MainMenu extends Menu {
 	
 	// render
 	public void render(Screen screen) {
-		screen.fillRect(0, 0, 960, 540, 0x000000);
-		//screen.drawTexture(0, 0, menuBackground);
+		//screen.fillRect(0, 0, 960, 540, 0x000000);
+		screen.drawTexture(0, 0, menuBackground);
+		screen.fillRect(680, 0, 960, 540, 0x000000);
 		screen.drawTexture(0, 0, menuOptions);
 		screen.drawTexture(0, 0, gameTitle);
 		
