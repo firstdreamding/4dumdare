@@ -31,6 +31,7 @@ public class Level {
 	private IGGui iGMenu;
 	Texture bg;
 	boolean test;
+	boolean raid;
 
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 
@@ -72,13 +73,15 @@ public class Level {
 
 	public void raidStart() {
 		double prob = 1 - Math.pow(1.05, -(money / 1000));
+		prob = prob/2;
 		System.out.println("Raid probability: " + prob);
 		Random r = new Random();
-		//if (r.nextDouble() < prob) {
-			for(int i = 0; i < 10; i++) {
+		raid = true;
+		if (r.nextDouble() < prob) {
+			for(int i = 0; i < 5; i++) {
 				members.add(new GangBoi(false));
 			}
-		//}
+		}
 	}
 
 	public void update() {
@@ -91,7 +94,7 @@ public class Level {
 				dayCounter = 0;
 				day++;
 			}
-			if (dayCounter % 60 == 0 && test) {
+			if (dayCounter % 60 == 0) {
 				raidStart();
 				test = false;
 			}
@@ -104,6 +107,7 @@ public class Level {
 				members.remove(i);
 			}
 		}
+		
 	}
 
 	public void render(Screen screen) {
@@ -116,6 +120,7 @@ public class Level {
 			basepeople.get(i).render(screen);
 		}
 		screen.drawString("Day " + day, 160, 80, tr, Color.black);
+		screen.drawString("Money " + money, 160, 100, tr, Color.black);
 		player.render(screen);
 
 		// ingame menu shit

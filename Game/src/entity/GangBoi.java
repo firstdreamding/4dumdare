@@ -2,7 +2,6 @@ package entity;
 
 import java.util.Random;
 
-
 import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
@@ -18,18 +17,20 @@ public class GangBoi {
 	final int AIM_H = 192;
 	SoundEffect sound;
 
+	public boolean raidOn;
 	final int MAX = 4;
-	int att = 10;
+	int att = 5;
 	public int def = 100;
 	int luc = 10;
 	int loy = 10;
 	int acc = 60;
+	int health = def;
 	int x = 200, y = 200;
 	String name;
 	private int totalScore = 0;
 	public Texture sprite;
 	int destx, desty = -1;
-	boolean team = true;
+	public boolean team = true;
 	long waittick = 0;
 	long waittarget = 0;
 	boolean moving = false;
@@ -88,16 +89,17 @@ public class GangBoi {
 		// W, H);
 		hitbox = new Hitbox(x, y, W, H);
 		x = random(100, 890);
-		y = random(100,470);
+		y = random(100, 470);
 		aimBox = new Hitbox(x - W, y - H, AIM_W, AIM_H);
 		animation = stand;
 		animation.start();
 	}
+
 	public GangBoi(boolean bool) {
 		// sprite = new Texture("/sprites/GB" + String.valueOf(random(1, MAX)) + ".png",
 		// W, H);
 		x = random(100, 890);
-		y = random(420,470);
+		y = random(420, 470);
 		hitbox = new Hitbox(x, y, W, H);
 		aimBox = new Hitbox(x - W, y - H, AIM_W, AIM_H);
 		animation = stand;
@@ -116,13 +118,13 @@ public class GangBoi {
 
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, animation.getSprite(), animation == walkLeft);
-		//screen.drawRect(x, y, W, H, 0x00ff00);
-		//screen.drawRect(aimBox.x, aimBox.y, aimBox.width, aimBox.height, 0xff00ff);
-		
-		screen.fillRect(x - 18, y - 20, def, 5, 0xFF0000);
-		if(!team) {
+		// screen.drawRect(x, y, W, H, 0x00ff00);
+		// screen.drawRect(aimBox.x, aimBox.y, aimBox.width, aimBox.height, 0xff00ff);
+		if (!team) {
 			screen.drawString("Bad", x, y);
 		}
+		screen.fillRect(x - 18, y - 20, 100, 5, 0x990000);
+		screen.fillRect(x - 18, y - 20, health, 5, 0xFF0000);
 
 	}
 
@@ -132,15 +134,18 @@ public class GangBoi {
 			combatTick++;
 			if (combatTick % 60 == 0) {
 				new SoundEffect("Gunshot.wav");
-				if(random.nextInt() > (1-otherGuy.luc) * acc) {
-					otherGuy.def -= att;
-					if(otherGuy.def >= 0) {
+				if (random.nextInt() > (1 - otherGuy.luc) * acc) {
+					System.out.println("health " + otherGuy.health);
+					otherGuy.health -= att;
+					System.out.println("health " + otherGuy.health);
+					System.out.println("shot Hit");
+					if (otherGuy.health <= 0) {
 						Main.getInstance().level.dead(otherGuy);
+						Main.getInstance().level.money += 1000;
 						stopMoving = false;
 					}
 				}
 			}
-			System.out.println(def);
 		} else if (moving || !team) {
 			boolean a1 = false, a2 = false;
 			if (x < destx) {
@@ -193,7 +198,11 @@ public class GangBoi {
 			aimBox.set(x - W, y - H, AIM_W, AIM_H);
 		} else {
 			waittick++;
-			if (waittick > waittarget) {
+			if (raidOn) {
+				desty = 205;
+				destx = 565;
+				moving = true;
+			} else if (waittick > waittarget) {
 				int angle = random(0, 359);
 				int radius = random(100, 200);
 				int destx = x + (int) (radius * Math.cos(Math.toRadians(angle)));
@@ -209,7 +218,7 @@ public class GangBoi {
 				}
 			}
 		}
-		if(!stopMoving)
+		if (!stopMoving)
 			combat();
 
 		animation.update();
@@ -224,8 +233,9 @@ public class GangBoi {
 	}
 
 	public void combat() {
-		for(int i = 0; i < Main.getInstance().level.members.size(); i++) {
-			if (Main.getInstance().level.members.get(i).hitbox.intersects(aimBox) && team != Main.getInstance().level.members.get(i).team) {
+		for (int i = 0; i < Main.getInstance().level.members.size(); i++) {
+			if (Main.getInstance().level.members.get(i).hitbox.intersects(aimBox)
+					&& team != Main.getInstance().level.members.get(i).team) {
 				otherGuy = Main.getInstance().level.members.get(i);
 				stopMoving = true;
 				break;

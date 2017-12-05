@@ -1,4 +1,5 @@
 package main;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -27,11 +28,14 @@ public class SoundEffect {
 		   public SoundEffect(String soundFileName) {
 		      try {
 		         // Use URL (instead of File) to read from disk and JAR.
-		         InputStream url = this.getClass().getResourceAsStream("/sprites/" + soundFileName);
-		         // Set up an audio input stream piped from the sound file.
-		         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
-		         // Get a clip resource.
-		         clip = AudioSystem.getClip();
+			         // Use URL (instead of File) to read from disk and JAR.
+			         InputStream url = this.getClass().getResourceAsStream("/sprites/" + soundFileName);
+			         // Set up an audio input stream piped from the sound file.
+			         InputStream bufferedIn = new BufferedInputStream(url);
+			         
+			         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
+			         // Get a clip resource.
+			         clip = AudioSystem.getClip();
 		         // Open audio clip and load samples from the audio input stream.
 		         clip.open(audioInputStream);
 		      } catch (UnsupportedAudioFileException e) {
@@ -41,6 +45,9 @@ public class SoundEffect {
 		      } catch (LineUnavailableException e) {
 		         e.printStackTrace();
 		      }
+		      FloatControl gainControl = 
+		    		    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+		    		gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 		      play();
 		   }
 		   
@@ -49,7 +56,8 @@ public class SoundEffect {
 			         // Use URL (instead of File) to read from disk and JAR.
 			         InputStream url = this.getClass().getResourceAsStream("/sprites/" + soundFileName);
 			         // Set up an audio input stream piped from the sound file.
-			         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
+			         InputStream bufferedIn = new BufferedInputStream(url);
+			         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
 			         // Get a clip resource.
 			         clip = AudioSystem.getClip();
 			         // Open audio clip and load samples from the audio input stream.
