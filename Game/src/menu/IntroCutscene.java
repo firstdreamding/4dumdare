@@ -73,7 +73,7 @@ public class IntroCutscene extends Menu {
 		
 		screen.drawTexture(x, y, animation.getSprite());
 		if (cuetext == true) {
-			screen.fillRectBlend(0, 0, 960, 540, 0x0000FF);
+			screen.fillRectBlend(0, 0, 960, 540, 0x000000);
 			if (texttime <= 100) {
 				screen.drawString("In this world...", 300, 160, f, Color.white);
 				texttime++;
