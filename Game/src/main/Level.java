@@ -30,10 +30,13 @@ public class Level {
 	public boolean inGameMenu;
 	private IGGui iGMenu;
 	Texture bg;
+	boolean test;
 
 	Font tr = new Font("TimesRoman", Font.PLAIN, 18);
 
 	public Level() {
+		bg = new Texture("/sprites/Warehouse.png",960, 540);
+		System.out.println("This ran");
 		day = 1;
 		basepeople.add(new ShopPerson(400, 100, 70, 70));
 		// Variable Initiation
@@ -47,8 +50,7 @@ public class Level {
 			inventory.add(new Item(false, Item.WEAPON));
 		}
 		
-		bg = new Texture("/sprites/Warehouse.png",960, 540);
-		
+		test = true;
 	}
 
 	public int nextOpenSpace() {
@@ -72,9 +74,11 @@ public class Level {
 		double prob = 1 - Math.pow(1.05, -(money / 1000));
 		System.out.println("Raid probability: " + prob);
 		Random r = new Random();
-		if (r.nextDouble() < prob) {
-			System.out.println("Ur getting raided");
-		}
+		//if (r.nextDouble() < prob) {
+			for(int i = 0; i < 10; i++) {
+				members.add(new GangBoi(false));
+			}
+		//}
 	}
 
 	public void update() {
@@ -87,11 +91,18 @@ public class Level {
 				dayCounter = 0;
 				day++;
 			}
-			if (dayCounter % 1800 == 0)
+			if (dayCounter % 60 == 0 && test) {
 				raidStart();
+				test = false;
+			}
 			dayCounter++;
 		} else {
 			iGMenu.update();
+		}
+		for (int i = 0; i < members.size(); i++) {
+			if(members.get(i).def < 0) {
+				members.remove(i);
+			}
 		}
 	}
 
@@ -111,6 +122,12 @@ public class Level {
 		if (inGameMenu) {
 			iGMenu.render(screen);
 		}
+		
+
+	}
+	
+	public void dead(GangBoi i) {
+		members.remove(i);
 	}
 
 	public void openMember(GangBoi g) {

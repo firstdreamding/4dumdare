@@ -87,7 +87,7 @@ public class IGGangMembersGui extends IGGui {
 
 	public void render(Screen screen) {
 		screen.drawTexture(0, 0, layover);
-		screen.drawTexture(90, 90, g.sprite);
+		screen.drawTexture(90, 90, g.sprites.getTexture(0,0));
 		/*
 		 * screen.drawRect(weaponbox.x, weaponbox.y, weaponbox.width, weaponbox.height,
 		 * 0x0000ff); screen.drawRect(cosmeticbox.x, cosmeticbox.y, cosmeticbox.width,

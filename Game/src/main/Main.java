@@ -57,7 +57,10 @@ public class Main {
 		window = new Window("Connect Subjects", W, H);
 		screen = window.getScreen();
 		window.show();
-		level = new Level();
+		level = new Level();		
+		SoundEffect.init();
+	    SoundEffect.volume = SoundEffect.Volume.LOW;
+	    new SoundEffect("Sound.wav", true);
 
 		// KEYLISTEN
 		window.addMouseListener(new MouseAdapter() {

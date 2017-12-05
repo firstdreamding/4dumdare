@@ -2,36 +2,45 @@ package entity;
 
 import java.util.Random;
 
+
 import graphics.Screen;
 import graphics.SpriteSheet;
 import graphics.Texture;
 import items.Item;
 import main.Animation;
 import main.Main;
+import main.SoundEffect;
 
 public class GangBoi {
 	final int W = 64;
 	final int H = 64;
 	final int AIM_W = 192;
 	final int AIM_H = 192;
+	SoundEffect sound;
 
 	final int MAX = 4;
-	int att = 0, def = 0, luc = 0, loy = 0, acc = 0;
+	int att = 10;
+	public int def = 100;
+	int luc = 10;
+	int loy = 10;
+	int acc = 60;
 	int x = 200, y = 200;
 	String name;
 	private int totalScore = 0;
 	public Texture sprite;
 	int destx, desty = -1;
-	boolean team;
+	boolean team = true;
 	long waittick = 0;
 	long waittarget = 0;
 	boolean moving = false;
 	boolean stopMoving;
-	Hitbox hitbox, aimBox;
+	public Hitbox hitbox, aimBox;
 	public Item weapon = new Item(false, Item.WEAPON);
+	Random random = new Random();
 	public Item cosmetic = new Item(false, Item.COSMETIC);
+	GangBoi otherGuy;
 	int combatTick;
-	SpriteSheet sprites = new SpriteSheet(
+	public SpriteSheet sprites = new SpriteSheet(
 			new Texture("/sprites/player" + String.valueOf(random(1, MAX)) + ".png", 320, 192), 64, 64);
 
 	Texture walkingDown[] = { sprites.getTexture(1, 0), sprites.getTexture(2, 0), sprites.getTexture(3, 0),
@@ -44,7 +53,7 @@ public class GangBoi {
 			sprites.getTexture(4, 2) };
 	Texture standing[] = { sprites.getTexture(0, 0) };
 
-	private Animation animation;
+	public Animation animation;
 	private Animation walkDown = new Animation(walkingDown, 10);
 	private Animation walkUp = new Animation(walkingUp, 10);
 	private Animation walkRight = new Animation(walkingRight, 10);
@@ -78,9 +87,26 @@ public class GangBoi {
 		// sprite = new Texture("/sprites/GB" + String.valueOf(random(1, MAX)) + ".png",
 		// W, H);
 		hitbox = new Hitbox(x, y, W, H);
+		x = random(100, 890);
+		y = random(100,470);
 		aimBox = new Hitbox(x - W, y - H, AIM_W, AIM_H);
 		animation = stand;
 		animation.start();
+	}
+	public GangBoi(boolean bool) {
+		// sprite = new Texture("/sprites/GB" + String.valueOf(random(1, MAX)) + ".png",
+		// W, H);
+		x = random(100, 890);
+		y = random(420,470);
+		hitbox = new Hitbox(x, y, W, H);
+		aimBox = new Hitbox(x - W, y - H, AIM_W, AIM_H);
+		animation = stand;
+		animation.start();
+		team = bool;
+		if (bool == false) {
+			desty = 205;
+			destx = 565;
+		}
 	}
 
 	static public int random(int min, int max) {
@@ -90,8 +116,13 @@ public class GangBoi {
 
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, animation.getSprite(), animation == walkLeft);
-		screen.drawRect(x, y, W, H, 0x00ff00);
-		screen.drawRect(aimBox.x, aimBox.y, aimBox.width, aimBox.height, 0xff00ff);
+		//screen.drawRect(x, y, W, H, 0x00ff00);
+		//screen.drawRect(aimBox.x, aimBox.y, aimBox.width, aimBox.height, 0xff00ff);
+		
+		screen.fillRect(x - 18, y - 20, def, 5, 0xFF0000);
+		if(!team) {
+			screen.drawString("Bad", x, y);
+		}
 
 	}
 
@@ -100,9 +131,17 @@ public class GangBoi {
 		if (stopMoving) {
 			combatTick++;
 			if (combatTick % 60 == 0) {
-
+				new SoundEffect("Gunshot.wav");
+				if(random.nextInt() > (1-otherGuy.luc) * acc) {
+					otherGuy.def -= att;
+					if(otherGuy.def >= 0) {
+						Main.getInstance().level.dead(otherGuy);
+						stopMoving = false;
+					}
+				}
 			}
-		} else if (moving) {
+			System.out.println(def);
+		} else if (moving || !team) {
 			boolean a1 = false, a2 = false;
 			if (x < destx) {
 				x++;
@@ -170,6 +209,8 @@ public class GangBoi {
 				}
 			}
 		}
+		if(!stopMoving)
+			combat();
 
 		animation.update();
 	}
@@ -182,11 +223,13 @@ public class GangBoi {
 		this.totalScore = totalScore;
 	}
 
-	public void combat(GangBoi otherGuy) {
-		if (otherGuy.hitbox.intersects(aimBox)) {
-			stopMoving = true;
-		} else {
-
+	public void combat() {
+		for(int i = 0; i < Main.getInstance().level.members.size(); i++) {
+			if (Main.getInstance().level.members.get(i).hitbox.intersects(aimBox) && team != Main.getInstance().level.members.get(i).team) {
+				otherGuy = Main.getInstance().level.members.get(i);
+				stopMoving = true;
+				break;
+			}
 		}
 	}
 

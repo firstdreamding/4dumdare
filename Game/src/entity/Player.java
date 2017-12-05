@@ -144,7 +144,7 @@ public class Player {
 			List<GangBoi> list = Main.getInstance().level.members;
 			for (int i = 0; i < list.size(); i++) {
 				Hitbox l = list.get(i).hitbox;
-				if (hitbox.intersects(l)) {
+				if (hitbox.intersects(l) && list.get(i).team) {
 					Main.getInstance().level.openMember(list.get(i));
 				}
 			}
@@ -192,4 +192,6 @@ public class Player {
 			break;
 		}
 	}
+	
+	
 }
